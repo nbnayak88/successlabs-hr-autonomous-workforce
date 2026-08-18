@@ -45,20 +45,6 @@ This repository is a living learning and experimentation ecosystem for architect
 | 19 | **Scan** | Industry Intelligence Lab | **Scan - Industry Intelligence Lab** |
 | 20 | **Innovate** | Research & Innovation Lab | **Innovate - Research & Innovation Lab** |
 
-## Repository Structure
-
-docs/
-learning/
-  bronze/
-  silver/
-  gold/
-  diamond/
-  quantum/
-labs/
-assets/
-assessments/
-examples/
-
 ## Learning Philosophy
 
 > Learn -> Experiment -> Architect -> Build -> Share
