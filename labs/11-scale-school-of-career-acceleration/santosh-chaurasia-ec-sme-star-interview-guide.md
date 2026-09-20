@@ -1,4 +1,4 @@
-# Santosh Chaurasia — Scenario-Based Interview Guide
+# Job Ready — Scenario-Based Interview Guide
 ## Tech Delivery Subject Matter Expert | SAP SuccessFactors Employee Central
 
 **Target role:** Tech Delivery Subject Matter Expert  
