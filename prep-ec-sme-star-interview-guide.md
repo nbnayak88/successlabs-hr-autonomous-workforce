@@ -5,7 +5,7 @@
 **Primary skill:** SAP SuccessFactors Employee Central  
 **Core interview theme:** Employee Central delivery + business process understanding + integration/data quality + AI-assisted productivity
 
-> **Important:** The STAR answers below are model answers for interview practice. Santosh should replace any illustrative details, metrics, client context, tools, or outcomes with facts from his actual project experience. Never claim experience that did not occur.
+> **Important:** The STAR answers below are model answers for interview practice. Student should replace any illustrative details, metrics, client context, tools, or outcomes with facts from his actual project experience. Never claim experience that did not occur.
 
 ---
 
@@ -387,7 +387,7 @@ Interviewers can use these after almost any answer:
 
 ---
 
-# 7. Santosh's Core Interview Narrative
+# 7. Student's Core Interview Narrative
 
 The answers should consistently reinforce one coherent professional story:
 
