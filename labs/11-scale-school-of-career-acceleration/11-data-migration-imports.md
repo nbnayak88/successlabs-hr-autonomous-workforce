@@ -1,597 +1,451 @@
 # Scenario Category 11 — Data Migration & Imports
 
-## Target Role
-**Tech Delivery Subject Matter Expert — SAP SuccessFactors Employee Central**
+## Interview Practice Guide — 20 Scenario-Based Questions, STAR Answers & SME Probes
 
-## Objective
-Prepare for SME-level interview scenarios involving Employee Central data migration, imports, legacy-data transformation, sequencing, effective dating, Foundation Objects, employee data, historical records, validation, error handling, cutover, reconciliation, and migration governance.
+**Track:** SCALE — School of Career Acceleration  
+**Target Role:** Tech Delivery Subject Matter Expert — SAP SuccessFactors Employee Central  
+**Question IDs:** SCALE-EC-11-Q01 through SCALE-EC-11-Q20
 
-> **Interview principle:** Migration is not simply uploading files. Demonstrate a controlled lifecycle: **discover → map → cleanse → transform → sequence → load → validate → reconcile → cut over → stabilize**.
+## Learning outcome
 
----
+Plan and govern Employee Central data migration and imports through source profiling, mapping, effective dating, dependency sequencing, controlled loads, error handling, reconciliation, security, cutover, and evidence-based acceptance.
 
-# 1. Designing an End-to-End Employee Central Migration
-
-### Scenario Question
-A company is moving from a legacy HR system to Employee Central with 50,000 employees. How would you approach the migration?
-
-### STAR Answer
-
-**Situation**  
-The organization needed to migrate employee and organizational data from a legacy HR platform into Employee Central while maintaining data quality and business continuity.
-
-**Task**  
-I needed to define a migration strategy that covered scope, data mapping, dependencies, sequencing, validation, cutover, and reconciliation.
-
-**Action**
-1. Defined migration scope and business objectives.
-2. Identified source systems and data owners.
-3. Classified data into Foundation Objects, employee/person data, employment data, Job Information, compensation-related data, and other required domains.
-4. Created source-to-target mapping.
-5. Identified mandatory fields, dependencies, and transformations.
-6. Established data-cleansing rules.
-7. Defined load sequencing based on dependencies.
-8. Performed trial migrations and reconciliation.
-9. Defined cutover, freeze, rollback, and support procedures.
-10. Established post-load validation and business sign-off.
-
-**Result**  
-The migration became a controlled business transformation with measurable data quality and traceability rather than a one-time bulk upload.
-
-### Follow-up Questions
-- How would you sequence the migration?
-- How would you handle historical data?
-- What if the legacy data is incomplete?
-- How would you define migration success?
+> **Answer integrity and product accuracy:** STAR answers are illustrative models, not claims about personal experience. Adapt them truthfully. Validate supported import/API methods, object-specific requirements, limits, and recovery capabilities against the target tenant and current official SAP documentation. A successful file/job status alone does not prove business-data correctness.
 
 ---
 
-# 2. Migration Sequencing and Dependencies
+## Q01 — Migration Scope and Data Ownership
 
-### Scenario Question
-You need to load Foundation Objects, positions, employee data, and Job Information. What sequence would you use and why?
+### Interview Question
+A program is moving worker and organizational data into Employee Central from multiple legacy systems. How do you establish migration scope and accountability?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Multiple sources contain overlapping employee and organizational data with differing quality and ownership.
+- **Task:** Define which data is in scope, who owns it, and what evidence proves it is ready.
+- **Action:** I would inventory entities, fields, source systems, record volumes, history requirements, data owners, target structures, and consumers. I would define scope boundaries, retention/migration decisions, assumptions, and accountable owners. I would agree acceptance and reconciliation criteria with HR, data, security, and integration stakeholders.
+- **Result:** The program would have a governed migration scope and clear ownership for decisions, remediation, and sign-off.
 
-**Situation**  
-The migration objects had dependencies that meant some records could not be loaded before their referenced master data existed.
+### SAP SuccessFactors Employee Central Example
+Create a data-object inventory for the agreed worker/person, employment/job, and organizational structures actually in scope.
 
-**Task**  
-I needed to establish a sequence that minimized load failures and dependency issues.
-
-**Action**
-1. Analyzed object relationships and mandatory references.
-2. Loaded foundational organizational/reference data first.
-3. Loaded dependent organizational structures such as positions where applicable.
-4. Loaded person and employment records.
-5. Loaded Job Information and other dependent employee data.
-6. Planned effective-dated and historical loads separately where required.
-7. Executed trial loads before production cutover.
-8. Validated referential integrity after each stage.
-9. Reconciled counts and key attributes before proceeding.
-
-**Result**  
-The load sequence reduced dependency failures and made troubleshooting more localized and manageable.
-
-### Follow-up Questions
-- What happens if a referenced Foundation Object is missing?
-- How would you handle circular dependencies?
-- Would historical data always be loaded in the same sequence?
+### SME Probe
+What do you do when two legacy systems both claim to be the source of truth?
 
 ---
 
-# 3. Legacy Data Has Inconsistent Values
+## Q02 — Source Data Profiling
 
-### Scenario Question
-The legacy system contains multiple values for the same department, inconsistent job codes, and obsolete locations. How would you handle this before migration?
+### Interview Question
+Initial profiling discovers missing values, invalid reference data, and inconsistent employee identifiers. How do you prepare the data for migration?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Source defects could cause rejected imports, incorrect relationships, or misleading downstream data.
+- **Task:** Quantify defects, prioritize remediation, and establish readiness criteria.
+- **Action:** I would profile completeness, validity, uniqueness, consistency, and effective dates. I would segment defects by source, entity, population, impact, and owner; define cleansing or approved exception paths; and track remediation against agreed thresholds. I would test whether controls prevent the same defects from re-entering the migration dataset.
+- **Result:** Readiness would be based on measurable data quality and accountable exception handling rather than informal assurance.
 
-**Situation**  
-Legacy master data was inconsistent and could not be loaded directly into the standardized Employee Central model.
+### SAP SuccessFactors Employee Central Example
+Profile employee and organizational source records against target mandatory values and valid reference data confirmed for the configured EC model.
 
-**Task**  
-I needed to cleanse and transform the data without silently changing business meaning.
-
-**Action**
-1. Profiled the legacy data.
-2. Identified duplicate, obsolete, invalid, and inconsistent values.
-3. Created a source-to-target value mapping.
-4. Worked with business data owners to determine the correct target values.
-5. Defined transformation and defaulting rules.
-6. Segregated records requiring manual remediation.
-7. Validated the transformed data against Employee Central master-data standards.
-8. Performed sample loads and reconciliation.
-9. Obtained business sign-off before production migration.
-
-**Result**  
-Legacy inconsistencies were addressed before they became Employee Central data-quality problems.
-
-### Follow-up Questions
-- Who should approve value mappings?
-- How would you handle records with no valid target value?
-- How would you preserve auditability of transformations?
+### SME Probe
+Which defects can be corrected through a governed transformation, and which require a business owner decision?
 
 ---
 
-# 4. Employee Import Fails Because of Missing Dependencies
+## Q03 — Source-to-Target Mapping
 
-### Scenario Question
-A large employee import fails because many records reference departments that do not exist in Employee Central. How would you respond?
+### Interview Question
+Legacy employee fields do not map one-to-one to the Employee Central data model. How do you create a defensible mapping?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** The legacy model represents concepts differently from the target and may contain fields with ambiguous meanings.
+- **Task:** Produce a mapping that preserves business semantics and target lifecycle requirements.
+- **Action:** I would define each source and target field, meaning, owner, transformations, value domain, effective dating, mandatory conditions, and downstream use. I would confirm mappings with business/data owners, document unresolved assumptions, and test representative records including exceptions. I would use standard target structures where appropriate and only introduce extensions when a justified gap remains.
+- **Result:** The mapping would be reviewable, testable, and traceable from source meaning to target representation.
 
-**Situation**  
-The employee data itself was structurally valid, but referenced organizational values that had not been loaded or mapped correctly.
+### SAP SuccessFactors Employee Central Example
+Map representative legacy employee/job fields to the configured EC model and document transformations and valid values.
 
-**Task**  
-I needed to recover the migration without repeatedly uploading invalid records.
-
-**Action**
-1. Reviewed the import error output.
-2. Identified all missing referenced values.
-3. Compared the failed references against the approved target master-data list.
-4. Determined whether the issue was missing master data or incorrect source mapping.
-5. Corrected the Foundation Object data or transformation mapping.
-6. Validated the dependency population.
-7. Retested a representative sample.
-8. Reprocessed the failed employee population.
-9. Reconciled successful and failed records separately.
-
-**Result**  
-The dependency issue was corrected at its source and the affected employee population was successfully migrated.
-
-### Follow-up Questions
-- Why should you avoid repeatedly rerunning the same failed file?
-- How would you identify all missing dependencies?
-- What controls would prevent this before the next migration cycle?
+### SME Probe
+How would you handle a legacy field with no exact target equivalent?
 
 ---
 
-# 5. Migrating Historical Employee Data
+## Q04 — Identifier Strategy and Duplicate Records
 
-### Scenario Question
-The business wants five years of employee history in Employee Central. How would you determine what should be migrated?
+### Interview Question
+Source systems use different identifiers for the same worker, and some identifiers have been reused. How do you prevent duplicate or mislinked records?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Identifier inconsistencies create identity resolution and relationship risks during migration.
+- **Task:** Establish reliable matching rules and preserve the correct person/employment relationships.
+- **Action:** I would profile key uniqueness and reuse, identify authoritative matching attributes, and define deterministic matching and exception review with data owners. I would not merge or discard records based on a single weak attribute. I would test duplicates, name changes, rehires, and other relevant edge cases under the approved identity policy.
+- **Result:** Records would be linked through governed evidence, with ambiguous cases routed for resolution instead of guessed.
 
-**Situation**  
-The organization wanted historical continuity but did not want to migrate unnecessary or low-value legacy information.
+### SAP SuccessFactors Employee Central Example
+Create a controlled matching/exceptions register and verify the resulting identifiers and relationships in test migration loads.
 
-**Task**  
-I needed to define a history strategy balancing business reporting, legal requirements, data quality, migration effort, and system usability.
-
-**Action**
-1. Identified business reporting and historical-analysis requirements.
-2. Identified legally or operationally required history.
-3. Classified historical records by business value and data quality.
-4. Determined which history could be represented in Employee Central and which should remain in an archive or legacy repository.
-5. Defined effective-dated migration rules.
-6. Validated historical sequencing.
-7. Performed sample historical migrations.
-8. Compared legacy and Employee Central history.
-9. Obtained business sign-off on historical completeness.
-
-**Result**  
-The organization migrated meaningful historical information while avoiding unnecessary legacy-data clutter.
-
-### Follow-up Questions
-- Should every legacy record be migrated?
-- How would you handle conflicting historical dates?
-- What if the legacy history is incomplete?
+### SME Probe
+What should happen when two records match on name and date of birth but other identifiers conflict?
 
 ---
 
-# 6. Future-Dated Data During Migration
+## Q05 — Effective-Dated History Migration
 
-### Scenario Question
-The legacy system contains current employee information plus approved changes that become effective next month. How would you migrate this data?
+### Interview Question
+The business requires historical job changes and future-dated transactions to be preserved. What do you include in the migration design?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** The source holds multiple records per employee across past, current, and future states.
+- **Task:** Preserve the intended chronology and make the history usable in the target.
+- **Action:** I would define the required history window, record granularity, effective-date semantics, sequence handling, and correction rules. I would map event reasons and dependencies where appropriate, test same-date and overlapping records, and reconcile the final target timeline with the approved source history. I would confirm the supported import behaviour for the relevant object.
+- **Result:** History would be accepted based on timeline correctness and business interpretation, not just record counts.
 
-**Situation**  
-The migration included both current-state and future-state employee records.
+### SAP SuccessFactors Employee Central Example
+Migrate a representative employee with historical, current, and future-dated Job Information records and compare resulting history in EC.
 
-**Task**  
-I needed to preserve the intended lifecycle while preventing future changes from becoming effective prematurely.
-
-**Action**
-1. Identified current and future-dated records separately.
-2. Validated effective dates and event reasons.
-3. Determined whether future transactions should be loaded before go-live.
-4. Established the correct load sequence.
-5. Tested multiple effective-dated records for the same employee.
-6. Validated current-state reporting.
-7. Validated future-state reporting.
-8. Reconciled dates, events, and key attributes.
-9. Confirmed downstream integration behavior after cutover.
-
-**Result**  
-The migrated employee records preserved both current and approved future states without prematurely changing operational data.
-
-### Follow-up Questions
-- What if a future change is cancelled after migration?
-- How would you test multiple future events?
-- How could future-dated records affect integrations?
+### SME Probe
+Why can a chronologically sorted file still produce an incorrect employee timeline?
 
 ---
 
-# 7. Migration Cutover Weekend
+## Q06 — Foundation Object Dependency Sequence
 
-### Scenario Question
-The production migration is planned for a weekend. How would you organize the cutover?
+### Interview Question
+Employee records reference departments, locations, job classifications, and other values that have not yet been loaded. How do you sequence the migration?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Dependent records cannot be created or validated because prerequisite reference data is missing.
+- **Task:** Establish a safe load order and manage failures without duplicating accepted data.
+- **Action:** I would map dependencies, identify authoritative prerequisite objects, and order load stages accordingly. I would validate references before loading dependents, separate source defects from sequencing failures, and define retry/exception handling. I would reconcile reference objects and their employee relationships after each stage.
+- **Result:** The migration would follow a documented dependency plan with predictable recovery.
 
-**Situation**  
-A large production migration had to occur within a defined business downtime window.
+### SAP SuccessFactors Employee Central Example
+Create a dependency graph for the organizational/reference objects and dependent employee records defined in the target EC data model.
 
-**Task**  
-I needed to establish a controlled cutover plan with clear sequencing, validation, ownership, and contingency procedures.
-
-**Action**
-1. Established the source-system freeze window.
-2. Captured the final source extract.
-3. Confirmed production target readiness.
-4. Validated migration files before execution.
-5. Executed loads in dependency order.
-6. Monitored errors and load counts.
-7. Performed technical and business validation.
-8. Reconciled source versus target.
-9. Completed integration smoke tests.
-10. Defined go/no-go and rollback criteria.
-11. Established hypercare support and escalation.
-
-**Result**  
-The migration moved into production through a controlled cutover with measurable validation gates and a clear recovery approach.
-
-### Follow-up Questions
-- What are your go/no-go criteria?
-- When would you stop a migration?
-- How would you handle a partial production load?
-- Who signs off?
+### SME Probe
+How do you identify circular or unresolved dependencies before a cutover load?
 
 ---
 
-# 8. Migration Reconciliation
+## Q07 — Mandatory Fields and Conditional Requirements
 
-### Scenario Question
-The migration report says 50,000 employees were loaded successfully, but HR reports that some employee records have incorrect managers and departments. How would you investigate?
+### Interview Question
+Some target fields are mandatory only for specific populations or transaction types. How do you design migration transformations without inventing data?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Legacy records lack values that may be required in the target under certain conditions.
+- **Task:** Produce valid target records while preserving data integrity.
+- **Action:** I would confirm the conditional rule and population scope with the data owner, determine if an authoritative source or approved derivation exists, and classify records that need business remediation. I would not insert arbitrary defaults merely to pass validation. I would test the transformation for in-scope and out-of-scope cases and retain a traceable exception report.
+- **Result:** Migrated values would be valid and explainable, with unresolved cases handled through approved business decisions.
 
-**Situation**  
-Technical load counts indicated success, but business validation identified incorrect employee attributes.
+### SAP SuccessFactors Employee Central Example
+Validate the field requirement and import behaviour for the configured object and transaction scope before creating transformation logic.
 
-**Task**  
-I needed to determine why technical success did not equal business correctness.
-
-**Action**
-1. Defined the expected source-to-target reconciliation rules.
-2. Compared source and target populations.
-3. Identified the exact employee population with mismatches.
-4. Compared source values, transformed values, and target values.
-5. Checked mapping and lookup logic.
-6. Reviewed effective dates and organizational dependencies.
-7. Corrected the transformation or source data.
-8. Reprocessed the affected population.
-9. Reconciled again using both record counts and business attributes.
-10. Updated migration validation controls.
-
-**Result**  
-The discrepancy was resolved and migration acceptance criteria were strengthened to include business-level data validation rather than only technical load counts.
-
-### Follow-up Questions
-- What reconciliation dimensions would you use?
-- How would you automate reconciliation?
-- What is more important: record count or data accuracy?
+### SME Probe
+What risks arise when a default value hides the fact that source data is missing?
 
 ---
 
-# 9. Import Error Management
+## Q08 — Import Method Selection
 
-### Scenario Question
-A migration import returns thousands of errors. The project team wants to fix the file manually and reload it. What approach would you take?
+### Interview Question
+The team is choosing a supported import/API method for a large EC data load. How do you select the approach?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Multiple data-entry mechanisms may exist, but they can differ in scope, validation, volume, permissions, and operational behaviour.
+- **Task:** Choose a method appropriate to the object, data volume, governance, and recovery needs.
+- **Action:** I would confirm current supported methods for the target object and release, requirements for effective-dated data, required operations, volume and file constraints, security, feedback/errors, retry, and audit evidence. I would run a controlled proof of concept and compare output/reconciliation. I would not assume an import tool supports every object or transaction.
+- **Result:** The selected method would be justified by verified capability and tested operational fit.
 
-**Situation**  
-A bulk import generated a large number of errors, creating pressure for rapid manual correction.
+### SAP SuccessFactors Employee Central Example
+Validate available import or API options for the exact entity and tenant using current official documentation.
 
-**Task**  
-I needed to determine whether the errors represented one common root cause or many independent issues.
-
-**Action**
-1. Categorized errors by type.
-2. Identified the highest-frequency error patterns.
-3. Determined whether failures were caused by missing dependencies, invalid values, formatting, mandatory fields, effective dates, or configuration.
-4. Fixed systemic issues first.
-5. Regenerated the affected data using controlled transformation logic.
-6. Tested a smaller sample.
-7. Re-ran the corrected population.
-8. Reconciled errors and successful records.
-9. Documented recurring validation rules for future migration cycles.
-
-**Result**  
-The team avoided inefficient record-by-record correction and addressed systemic migration defects at their source.
-
-### Follow-up Questions
-- How would you prioritize thousands of errors?
-- When is manual correction acceptable?
-- How would you prevent the same errors in the next cycle?
+### SME Probe
+What evidence do you need beyond the documentation page to approve the method for this project?
 
 ---
 
-# 10. SME Ownership of Migration Governance
+## Q09 — Trial Load and Error Handling
 
-### Scenario Question
-You are the Employee Central SME responsible for migration quality. Multiple teams are supplying employee, organization, position, and payroll-related data. How would you govern the migration?
+### Interview Question
+The first test load rejects a large percentage of records. How do you turn the result into a productive remediation cycle?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Rejections reveal mapping, dependency, data quality, or target validation issues.
+- **Task:** Classify the errors, prioritize root causes, and produce a corrected repeatable load.
+- **Action:** I would group errors by type, field, source pattern, and dependency; distinguish systemic mapping defects from isolated source issues; assign owners; and correct the upstream layer where appropriate. I would rerun a representative sample first, track reopened errors, and preserve accepted/rejected record status to ensure safe retry.
+- **Result:** Remediation would reduce recurring error classes and improve load readiness with traceable evidence.
 
-**Situation**  
-Multiple teams owned different data domains and were producing migration inputs with varying standards.
+### SAP SuccessFactors Employee Central Example
+Use import feedback from the actual tool to build an exception register with record key, error category, owner, correction and retest outcome.
 
-**Task**  
-I needed to establish a single migration governance model while retaining domain ownership.
-
-**Action**
-1. Created a migration data-domain inventory.
-2. Assigned data owners for each domain.
-3. Established source-to-target mapping standards.
-4. Defined mandatory-field and data-quality rules.
-5. Created migration templates and naming conventions.
-6. Established validation and sign-off checkpoints.
-7. Controlled migration versions and changes.
-8. Defined reconciliation metrics.
-9. Established defect classification and escalation.
-10. Maintained a migration runbook covering trial loads, cutover, rollback, and hypercare.
-
-**Result**  
-Migration became a governed delivery process with clear accountability, measurable quality, and repeatable execution.
-
-### Follow-up Questions
-- Who owns data quality?
-- What migration KPIs would you track?
-- How would you manage conflicting data-owner decisions?
-- How would you prepare for a second migration wave?
+### SME Probe
+How do you prioritize errors when a small number of invalid records have very high business impact?
 
 ---
 
-# Rapid-Fire SME Probes
+## Q10 — Reconciliation Beyond Record Counts
 
-1. What are the major stages of Employee Central migration?
-2. Why is migration sequencing important?
-3. What is source-to-target mapping?
-4. Why is data cleansing required before migration?
-5. How do Foundation Objects affect employee imports?
-6. How do you handle effective-dated historical data?
-7. How do you handle future-dated records?
-8. What is a trial migration?
-9. What is migration reconciliation?
-10. What is a migration cutover plan?
-11. What are go/no-go criteria?
-12. How do you handle partial migration failure?
-13. How do you classify import errors?
-14. How do you validate business correctness?
-15. What should a migration runbook contain?
-16. How do you control migration file versions?
-17. Who owns migration data quality?
-18. How do you handle sensitive employee data during migration?
+### Interview Question
+The import reports that all expected records were accepted, but HR finds incorrect values and relationships. What reconciliation do you perform?
+
+### STAR Model Answer
+- **Situation:** Technical acceptance does not guarantee correct business content.
+- **Task:** Verify record identity, critical fields, relationships, chronology, and downstream readiness.
+- **Action:** I would reconcile by stable keys and business dimensions, compare critical source-to-target values, validate effective-dated sequences and object associations, and inspect rejected/omitted/duplicate cases. I would sample high-risk records and automate repeatable comparisons where approved. I would document residual differences and require business acceptance rather than declaring success based on counts.
+- **Result:** Migration acceptance would be based on semantic accuracy and traceable exception handling.
+
+### SAP SuccessFactors Employee Central Example
+Compare selected source and target employee histories, organizational references, required fields, and agreed key business attributes.
+
+### SME Probe
+Which fields or relationships deserve 100% reconciliation rather than sampling?
 
 ---
 
-# Master Migration Framework
+## Q11 — Privacy and Secure Migration Files
 
-Use this sequence in an interview:
+### Interview Question
+Migration files contain sensitive employee and compensation information and are being shared through broad team channels. How do you improve handling?
 
-**DISCOVER → MAP → CLEANSE → TRANSFORM → SEQUENCE → LOAD → VALIDATE → RECONCILE → CUTOVER → STABILIZE**
+### STAR Model Answer
+- **Situation:** Sensitive data is exposed to unnecessary recipients or stored without clear retention/access controls.
+- **Task:** Enable migration work while minimizing data exposure.
+- **Action:** I would classify data, restrict access to authorized roles, use approved encrypted storage/transfer, minimize fields in working extracts, and define retention/deletion rules with security and privacy owners. I would use synthetic/masked data for routine testing when feasible and document incident handling for misdirected files.
+- **Result:** Migration would operate under a clear data-handling control model with accountable access and retention.
 
-### 1. DISCOVER
-Understand:
-- Source systems
-- Data domains
-- Volumes
-- History
-- Data owners
-- Business requirements
+### SAP SuccessFactors Employee Central Example
+Prepare a field-minimized migration test set and restrict real employee extracts to the approved migration workspace and roles.
 
-### 2. MAP
-Create source-to-target mappings:
-- Field
-- Data type
-- Mandatory status
-- Value mapping
-- Default
-- Transformation
-- Business owner
-
-### 3. CLEANSE
-Identify:
-- Duplicates
-- Invalid values
-- Obsolete values
-- Missing mandatory data
-- Inconsistent organizational structures
-
-### 4. TRANSFORM
-Convert source data into Employee Central-compatible values while preserving business meaning.
-
-### 5. SEQUENCE
-Load objects in dependency order.
-
-### 6. LOAD
-Execute controlled trial, mock, and production loads.
-
-### 7. VALIDATE
-Validate:
-- Technical load status
-- Mandatory fields
-- Referential integrity
-- Effective dates
-- Business rules
-- Key employee attributes
-
-### 8. RECONCILE
-Compare:
-**Legacy Source ↔ Transformation Layer ↔ Employee Central**
-
-### 9. CUTOVER
-Execute:
-- Freeze
-- Final extract
-- Production load
-- Validation
-- Integration smoke tests
-- Go/no-go
-
-### 10. STABILIZE
-Perform:
-- Hypercare
-- Defect resolution
-- Reconciliation
-- Documentation
-- Knowledge transfer
-- Post-migration review
+### SME Probe
+What is your response if a file containing sensitive employee data has already been sent to the wrong recipient?
 
 ---
 
-# Migration Validation Pyramid
+## Q12 — Rehearse Cutover and Final Load
 
-Validate at four levels:
+### Interview Question
+A cutover requires a final delta load after source systems have continued to change. How do you ensure completeness?
 
-### Level 1 — File Validation
-- Format
-- Headers
-- Data types
-- Required columns
+### STAR Model Answer
+- **Situation:** The migration snapshot may become stale before target cutover completes.
+- **Task:** Move the final changes safely into the target and reconcile them with the agreed source-of-truth point.
+- **Action:** I would define freeze/watermark strategy, last extraction point, delta criteria, change capture limitations, sequencing, validation, retry, and the responsible approvers. I would rehearse the cutover, include changes made during the transition window, reconcile the final population and critical fields, and define go/no-go and contingency criteria.
+- **Result:** Cutover completion would be based on a proven final data state, not simply successful execution of the last file.
 
-### Level 2 — Technical Validation
-- Import success
-- Object references
-- Dependencies
-- Error counts
+### SAP SuccessFactors Employee Central Example
+Rehearse the actual extraction/delta method and compare source changes around the cutover boundary with target records.
 
-### Level 3 — Data Validation
-- Employee attributes
-- Organizational relationships
-- Effective dates
-- Historical records
-
-### Level 4 — Business Validation
-- HR process usability
-- Reporting accuracy
-- Lifecycle correctness
-- Payroll/integration readiness
-
-> A technically successful import is not necessarily a successful migration.
+### SME Probe
+What if the source cannot be frozen and the integration cannot reliably detect every change since the snapshot?
 
 ---
 
-# Migration Reconciliation Checklist
+## Q13 — Rollback and Recovery Planning
 
-At minimum, reconcile:
+### Interview Question
+A load introduces incorrect organizational values and the cutover team proposes reloading the original file. What do you assess first?
 
-- Total employee count
-- Active employee count
-- Inactive/terminated population
-- Person identifiers
-- Employment identifiers
-- Manager relationships
-- Department
-- Division
-- Business unit
-- Location
-- Position
-- Job classification
-- Effective dates
-- Event reasons where applicable
-- Country/legal entity
-- Key sensitive-data fields
-- Error population
-- Integration-relevant attributes
+### STAR Model Answer
+- **Situation:** The target contains incorrect data, but reload may overwrite valid changes or create further inconsistencies.
+- **Task:** Choose a safe, authorized correction or recovery approach.
+- **Action:** I would identify affected records, distinguish inserts from updates and other operations, review audit/backup and approved recovery options, and assess downstream processing since the load. I would coordinate with data owners to determine whether to correct, reverse, restore, or selectively reload using supported procedures. I would test the selected method and reconcile affected records afterward.
+- **Result:** Recovery would be controlled and scoped, with evidence of restored business state and no unreviewed collateral changes.
+
+### SAP SuccessFactors Employee Central Example
+Use the actual supported recovery method and confirm consequences for record history and connected systems before execution.
+
+### SME Probe
+Why is reloading the original file not always a safe rollback?
 
 ---
 
-# Cutover Readiness Checklist
+## Q14 — Incremental Load and Idempotency
 
-Before production migration, verify:
+### Interview Question
+A migration step is rerun after a timeout, and the team is unsure which records were committed. How do you avoid duplicate or contradictory data?
 
-- Source freeze agreed
-- Final extract validated
-- Migration templates approved
-- Mapping signed off
-- Dependencies loaded/planned
-- Trial migration completed
-- Critical defects closed
-- Reconciliation approach approved
-- Security/RBP validated
-- Integration readiness confirmed
-- Go/no-go criteria defined
-- Rollback/recovery approach documented
-- Business validation owners identified
-- Hypercare team available
+### STAR Model Answer
+- **Situation:** A partial failure leaves uncertain processing state.
+- **Task:** Establish accepted records and make rerun behaviour safe.
+- **Action:** I would retrieve available job/error status, reconcile target records using stable keys and timestamps, and classify accepted, rejected, and uncertain records. I would verify the operation semantics and whether repeat execution is safe, then rerun only the controlled scope under an approved plan. I would record evidence and add checkpoint/reconciliation controls for future batches.
+- **Result:** Reprocessing would be based on confirmed state rather than blindly rerunning the full dataset.
+
+### SAP SuccessFactors Employee Central Example
+Simulate an interrupted load and verify the behavior of repeated record submission using the actual load method and object.
+
+### SME Probe
+What must be confirmed when an operation is an update versus a create?
 
 ---
 
-# Common Anti-Patterns
+## Q15 — Mapping Event Reasons and Legacy Values
 
-Avoid answers such as:
+### Interview Question
+Legacy systems use different action codes for hire, transfer, promotion, and termination. How do you map them to the target consistently?
 
-- "We can upload the legacy data as-is."
-- "The technical team owns all data cleansing."
-- "If the import says successful, migration is complete."
-- "We can fix all errors manually."
-- "Historical data is always migrated."
-- "Future-dated records can be treated like current records."
-- "Dependencies can be fixed after the employee import."
-- "Record counts are enough for reconciliation."
-- "Rollback is unnecessary if the load is mostly successful."
+### STAR Model Answer
+- **Situation:** Source action codes carry business meaning that may not map one-to-one to the target taxonomy.
+- **Task:** Preserve the semantics needed for lifecycle processing, reporting, and downstream integrations.
+- **Action:** I would build a code crosswalk with HR data/process owners, define handling for unknown or ambiguous codes, and assess rules, effective dating, workflows, and consumer impacts. I would test each mapping with representative records and validate historical and downstream interpretation before approving the transformation.
+- **Result:** The code mapping would be governed, documented, and traceable to business meaning.
 
-Instead, demonstrate **data ownership, dependency analysis, controlled transformation, effective-dated thinking, trial migration, reconciliation, cutover discipline, and business validation**.
+### SAP SuccessFactors Employee Central Example
+Map legacy lifecycle/action values to the configured target event-reason model only after confirming the target configuration and business policy.
 
----
-
-# Strong SME Answer Pattern
-
-For any migration scenario:
-
-1. **Define migration scope and business objective.**
-2. **Identify source and data owners.**
-3. **Map source to target.**
-4. **Cleanse and transform data.**
-5. **Identify dependencies and load sequence.**
-6. **Run trial/mock migration.**
-7. **Validate technical and business correctness.**
-8. **Reconcile source and target.**
-9. **Execute controlled cutover.**
-10. **Stabilize and govern post-migration.**
+### SME Probe
+What should happen when two legacy codes appear similar but imply different downstream treatment?
 
 ---
 
-# Category Success Criteria
+## Q16 — Migration Impacts on RBP and Integration
 
-The candidate is ready for this category when they can:
+### Interview Question
+After migration, some employees are missing from reports and some users cannot access the records as expected. What do you check?
 
-- Design an end-to-end Employee Central migration.
-- Explain source-to-target mapping.
-- Identify and manage data dependencies.
-- Design Foundation Object and employee-data load sequencing.
-- Handle legacy data cleansing and transformation.
-- Explain historical and future-dated migration.
-- Manage trial and mock migrations.
-- Design production cutover and recovery.
-- Troubleshoot bulk import errors systematically.
-- Perform technical and business reconciliation.
-- Establish migration governance and ownership.
-- Connect migration quality to downstream integrations and HR business processes.
+### STAR Model Answer
+- **Situation:** The load may have created data but not the relationships or attributes required for expected access and consumption.
+- **Task:** Determine whether the issue is data, security, reporting, or integration.
+- **Action:** I would compare affected records with approved mappings and target expectations, inspect organizational/group-driving attributes, identifiers, effective dates, and valid reference relationships, and test user permissions and consumer outputs. I would identify whether records were incomplete, filtered, inaccessible, or not replicated, and assign remediation to the responsible layer.
+- **Result:** Post-load issues would be corrected based on evidence, with regression checks for access and consumer completeness.
+
+### SAP SuccessFactors Employee Central Example
+Trace a migrated employee from source values through EC record relationships, RBP target population, and the actual downstream report/interface.
+
+### SME Probe
+How can missing organizational data create an access issue even when the employee record exists?
 
 ---
 
-## Interview Positioning
+## Q17 — Cutover Reconciliation and Sign-Off
 
-For a Tech Delivery SME interview, frame migration expertise as:
+### Interview Question
+The technical team says migration is complete, but HR has not reviewed exceptions. What evidence is required for sign-off?
 
-**Legacy Data → Data Quality → Mapping → Transformation → EC Data Model → Dependency Sequence → Controlled Load → Validation → Reconciliation → Cutover → Hypercare**
+### STAR Model Answer
+- **Situation:** Technical loading has finished, but business acceptance and unresolved data quality are not fully evidenced.
+- **Task:** Establish a go/no-go decision based on completeness, accuracy, controls, and accountable acceptance.
+- **Action:** I would present source/target reconciliation, critical-field checks, history and relationships, rejected/omitted/duplicate records, resolved and unresolved exceptions, downstream validation, security checks, and business-owner sign-off. I would compare results with predefined thresholds and ensure residual risks have explicit owners and approvals.
+- **Result:** Sign-off would reflect the actual target data state and business acceptance rather than the end of a technical job.
 
-The strongest answers show that migration is an **HR transformation and data-quality discipline**, not simply a file-upload activity.
+### SAP SuccessFactors Employee Central Example
+Use the signed migration reconciliation and exception register for the actual objects and populations in scope.
+
+### SME Probe
+Who should accept residual data risk, and what evidence should accompany that decision?
+
+---
+
+## Q18 — Data Migration Metrics and Readiness
+
+### Interview Question
+Leadership asks whether the data migration is ready for cutover. Which measures and thresholds do you propose?
+
+### STAR Model Answer
+- **Situation:** The team needs a transparent readiness view rather than a subjective green status.
+- **Task:** Define meaningful migration quality and operational indicators.
+- **Action:** I would agree measures for record completeness, critical-field accuracy, duplicate rate, reference relationship validity, exception count/severity, rejected records, reconciliation variance, and resolution age. I would define denominator, population, source point, target point, and thresholds with business owners; verify metric reliability; and present unresolved risk explicitly.
+- **Result:** Readiness would be judged against agreed evidence and thresholds, including exceptions that cannot be safely accepted.
+
+### SAP SuccessFactors Employee Central Example
+Build a migration scorecard using the actual source and target reconciliation data, with clear definitions and owner sign-off.
+
+### SME Probe
+Why can a high overall success percentage still conceal a cutover blocker?
+
+---
+
+## Q19 — Stakeholder Challenge to Data Remediation
+
+### Interview Question
+The business wants to load inconsistent data now and fix it after go-live to avoid delay. How do you respond?
+
+### STAR Model Answer
+- **Situation:** Schedule pressure encourages deferring data defects into production.
+- **Task:** Separate acceptable exceptions from defects that threaten business, payroll, security, compliance, or downstream processing.
+- **Action:** I would quantify and classify defects by impact, define the consequences of each, and identify safe workaround, containment, and owner only where appropriate. I would compare remediation time and downstream risk, present evidence to the decision owner, and require explicit acceptance for any allowed residual issue. I would block or escalate critical defects according to agreed go/no-go criteria.
+- **Result:** The decision would balance timing and risk transparently, without disguising critical quality gaps as post-go-live tasks.
+
+### SAP SuccessFactors Employee Central Example
+Use the migration issue register to demonstrate which data defects affect transactions, access, reporting, or downstream consumers.
+
+### SME Probe
+What makes a data defect a cutover blocker rather than an acceptable post-go-live remediation?
+
+---
+
+## Q20 — Defend the Migration Strategy
+
+### Interview Question
+You must defend the EC migration strategy to HR leadership, data governance, security, integration, testing, and operations. What evidence pack do you present?
+
+### STAR Model Answer
+- **Situation:** Migration affects employee records, organizational dependencies, downstream processing, and operational readiness.
+- **Task:** Demonstrate that data will move accurately, securely, and recoverably.
+- **Action:** I would present scope and ownership, source-to-target mappings, profiling, cleansing, dependency sequencing, import method rationale, trial-load results, effective-date/history treatment, reconciliation, privacy/access controls, cutover and recovery approach, exception register, test evidence, and sign-off criteria. I would call out unsupported assumptions and unresolved risks explicitly.
+- **Result:** Stakeholders could evaluate the plan against traceable requirements, validated data, and a controlled recovery strategy.
+
+### SAP SuccessFactors Employee Central Example
+Walk through an end-to-end rehearsal from source extraction to EC target record, reconciliation, downstream validation, and signed business acceptance.
+
+### SME Probe
+Which evidence gap would prevent you from recommending go-live even if all imports completed successfully?
+
+---
+
+# Rapid-Fire SME Probe Bank
+
+1. Who owns migration data decisions?
+2. How do you profile data readiness?
+3. What makes a mapping defensible?
+4. How do you resolve duplicate identifiers?
+5. What does effective-dated history require?
+6. Why does object dependency sequencing matter?
+7. How should missing mandatory values be handled?
+8. How do you select a supported load method?
+9. How do you prioritize rejections?
+10. Why are row counts insufficient?
+11. How should sensitive migration files be handled?
+12. How do you capture final deltas?
+13. Why is reloading not always rollback?
+14. What makes a rerun safe?
+15. Who should sign off residual data risk?
+
+# STAR Answer Quality Rubric
+
+Score each dimension from 0 to 4 for coaching, not as a validated hiring assessment.
+
+| Dimension | Strong evidence |
+|---|---|
+| Situation | Identifies migration scope, source conditions, and business risk. |
+| Task / ownership | Defines accountable role and decision authority. |
+| Action / reasoning | Shows mapping, dependency, effective-date, security, and reconciliation reasoning. |
+| EC/migration depth | Considers target structures, supported load method, record history, and downstream impacts. |
+| Result / evidence | Uses verified reconciliation or an honest measurement plan without invented metrics. |
+| SME insight | Explains cutover risks, recovery, exceptions, and accountable sign-off. |
+| Integrity | States product/version assumptions and separates experience from hypothetical approach. |
+
+# Common Migration Anti-Patterns
+
+- Loading before ownership and mapping are agreed.
+- Treating record counts as proof of correct data.
+- Using arbitrary defaults to force required fields through.
+- Ignoring effective-dated history and dependency sequence.
+- Re-running full files after uncertain partial processing.
+- Sharing sensitive employee extracts broadly.
+- Declaring migration complete before downstream and access validation.
+- Accepting critical defects without accountable risk acceptance.
+- Calling technical completion business readiness.
+
+# Master Framework — Migration to Verified Data State
+
+**Scope and ownership → Profile → Map → Cleanse → Sequence dependencies → Trial load → Reconcile → Fix/retest → Rehearse cutover → Sign-off → Monitor and improve.**
+
+# Success Criteria
+
+The candidate can answer all 20 scenarios in STAR format, justify the load strategy, manage mapping and dependency risks, validate historical and current data, explain safe reruns/recovery, and defend go/no-go decisions with business-level evidence.
+
+## Source and Verification Guidance
+
+This is an interview coaching blueprint, not a load-runbook for a specific tenant. Validate supported import/API options, object-specific requirements, limits, effective dating, audit, and recovery behaviour against the target EC tenant and current official SAP documentation. Record product/version and enabled scope before execution.
