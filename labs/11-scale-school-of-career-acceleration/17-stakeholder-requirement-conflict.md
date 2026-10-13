@@ -1,612 +1,450 @@
 # Scenario Category 17 — Stakeholder & Requirement Conflict
 
-## Target Role
-**Tech Delivery Subject Matter Expert — SAP SuccessFactors Employee Central**
+## Interview Practice Guide — 20 Scenario-Based Questions, STAR Answers & SME Probes
 
-## Objective
+**Track:** SCALE — School of Career Acceleration  
+**Target Role:** Tech Delivery Subject Matter Expert — SAP SuccessFactors Employee Central  
+**Question IDs:** SCALE-EC-17-Q01 through SCALE-EC-17-Q20
 
-Prepare for SME-level interview scenarios where stakeholders disagree on requirements, business teams request exceptions, global and local HR teams have competing priorities, or technical constraints conflict with desired business outcomes.
+## Learning outcome
 
-> **Interview principle:** An SME should not simply accept the loudest stakeholder's request or reject requirements because they are difficult to configure. The objective is to establish the business outcome, clarify constraints, evaluate options, explain trade-offs, and guide stakeholders toward a governed solution.
+Resolve ambiguous, competing, or changing Employee Central requirements using structured discovery, evidence, decision rights, option analysis, stakeholder communication, and traceable acceptance.
 
----
-
-# 1. Two Stakeholders Want Different EC Processes
-
-### Scenario Question
-Global HR wants one standardized Employee Central process, while a regional HR team insists on a country-specific process. How would you handle the conflict?
-
-### STAR Answer
-
-**Situation**  
-Global HR wanted process consistency, while the regional team believed local requirements required variation.
-
-**Task**  
-I needed to determine whether the regional requirement was genuinely necessary and design a solution that balanced standardization with legitimate local needs.
-
-**Action**
-1. Facilitated a requirement clarification session.
-2. Separated business outcomes from requested system behavior.
-3. Identified statutory, policy, operational, and preference-based requirements.
-4. Classified requirements as global, local, mandatory, or optional.
-5. Assessed whether standard EC functionality could support the variation.
-6. Evaluated configuration and maintenance impact.
-7. Presented options with trade-offs.
-8. Recommended a controlled global design with isolated local variation where justified.
-9. Obtained stakeholder agreement.
-10. Documented the design decision and governance ownership.
-
-**Result**  
-The disagreement was converted into an evidence-based design decision rather than a configuration debate.
-
-### Follow-up Questions
-- What if the regional stakeholder refuses the global design?
-- How do you distinguish a statutory requirement from a preference?
-- When would you recommend customization?
-- Who makes the final decision?
+> **Answer integrity:** These are illustrative STAR models, not claims of personal achievement. Replace them with genuine examples and evidence. Where requirements involve product capabilities, security, or local policy, validate the specifics in the target tenant and with accountable specialists.
 
 ---
 
-# 2. Business Requests a Custom Solution
+## Q01 — Vague Requirement at Discovery
 
-### Scenario Question
-A senior business stakeholder asks for a custom EC solution because they believe standard functionality is insufficient. What would you do?
+### Interview Question
+A stakeholder says, “Make the transfer process easier,” but cannot explain the required change. How do you structure discovery?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** The request expresses dissatisfaction but lacks a defined problem, scope, and measurable outcome.
+- **Task:** Turn the request into an actionable, testable requirement.
+- **Action:** I would ask users to walk through the current process, identify pain points and exceptions, define affected populations and roles, and clarify the desired future state. I would distinguish business outcomes from proposed technical solutions, document assumptions, and agree acceptance criteria and decision owners before design begins.
+- **Result:** Stakeholders would have a shared problem statement, scope, and evidence of what success means.
 
-**Situation**  
-The stakeholder had a strong preference for a custom design based on the current business process.
+### SAP SuccessFactors Employee Central Example
+Map a representative transfer journey, including data, effective date, approvals, permissions, and downstream consumers as applicable.
 
-**Task**  
-I needed to understand the actual business need before accepting the requested technical solution.
-
-**Action**
-1. Asked the stakeholder to describe the desired business outcome.
-2. Captured current-state pain points.
-3. Demonstrated relevant standard capabilities.
-4. Evaluated configuration options.
-5. Considered process simplification.
-6. Assessed integration, security, upgrade, and support implications.
-7. Compared standard, configurable, and custom options.
-8. Presented trade-offs transparently.
-9. Agreed on the option that best met the business objective within governance constraints.
-10. Documented the decision and rationale.
-
-**Result**  
-The discussion shifted from "build what I asked for" to "solve the business problem sustainably."
-
-### Follow-up Questions
-- What if the stakeholder has executive sponsorship?
-- What if standard functionality requires business-process change?
-- How do you communicate technical debt?
+### SME Probe
+What would make you stop discovery from becoming an open-ended workshop with no decision?
 
 ---
 
-# 3. Conflicting Requirements From HR and Payroll
+## Q02 — Conflicting Business and Technical Requirements
 
-### Scenario Question
-HR wants an Employee Central process optimized for employee experience, while Payroll requires additional controls that make the process more complex. How would you resolve the conflict?
+### Interview Question
+HR wants fewer mandatory fields, while downstream systems require those values. How do you resolve the conflict?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** A user-experience request conflicts with data requirements of connected processes.
+- **Task:** Make the trade-offs explicit and agree a design that protects data integrity without unnecessary friction.
+- **Action:** I would identify which fields are truly mandatory for which populations and processes, trace the downstream contracts, and confirm whether defaults, conditional validation, or an alternative data source are supported and appropriate. I would evaluate options with business and integration owners, test valid/invalid cases, and document the decision and exception handling.
+- **Result:** The requirement would be reconciled through a governed decision rather than weakening controls without understanding consequences.
 
-**Situation**  
-HR and Payroll had valid but competing objectives.
+### SAP SuccessFactors Employee Central Example
+Trace the field from EC entry to the actual target consumers and validate the mandatory/conditional rules in the tenant.
 
-**Task**  
-I needed to design an end-to-end process that protected payroll correctness without unnecessarily degrading employee experience.
-
-**Action**
-1. Mapped the complete employee lifecycle process.
-2. Identified the non-negotiable payroll controls.
-3. Identified employee-experience pain points.
-4. Separated mandatory controls from process preferences.
-5. Explored automation and validation options.
-6. Assessed workflow and timing.
-7. Evaluated alternative designs.
-8. Used evidence from testing to demonstrate impact.
-9. Facilitated agreement on the target process.
-10. Documented ownership and control points.
-
-**Result**  
-Both teams understood the dependencies and agreed on a process that balanced payroll integrity with usable employee experience.
-
-### Follow-up Questions
-- What if Payroll refuses any change?
-- What if the business wants to remove a control?
-- How would you prove the risk?
+### SME Probe
+What evidence would justify making a field optional for one population but mandatory for another?
 
 ---
 
-# 4. Stakeholder Changes Requirements During Build
+## Q03 — Standard Versus Custom Disagreement
 
-### Scenario Question
-A business stakeholder changes a major requirement after configuration has already started. How would you respond?
+### Interview Question
+A stakeholder insists on customization, while the technical team recommends standard Employee Central capabilities. How do you facilitate a decision?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Stakeholders disagree based on business preference and technical maintainability concerns.
+- **Task:** Create a decision framework that focuses on the business requirement and lifecycle impact.
+- **Action:** I would define the mandatory requirement and exceptions, demonstrate standard capability in the target tenant, and document any functional gap. I would compare options on fit, supportability, security, integration, release impact, implementation effort, and total lifecycle cost. I would recommend an option with evidence and ensure the accountable owner makes the decision.
+- **Result:** The choice would be traceable to business criteria and documented trade-offs.
 
-**Situation**  
-A significant requirement changed during implementation, potentially affecting configuration and testing.
+### SAP SuccessFactors Employee Central Example
+Compare standard configuration and any proposed extension using a controlled scenario; do not assume feature support without verifying it.
 
-**Task**  
-I needed to determine the impact without creating uncontrolled scope or delivery risk.
-
-**Action**
-1. Clarified the new business requirement.
-2. Compared it with the approved baseline.
-3. Performed impact analysis across EC data model, rules, workflow, RBP, integration, migration, and testing.
-4. Estimated effort and timeline impact.
-5. Identified affected deliverables.
-6. Presented options and consequences.
-7. Routed the change through the agreed change-control process.
-8. Updated design documentation after approval.
-9. Replanned impacted testing.
-10. Communicated the decision to all affected teams.
-
-**Result**  
-The requirement was accommodated through controlled change management rather than silent scope expansion.
-
-### Follow-up Questions
-- What if the change is legally mandatory?
-- What if the deadline cannot move?
-- What if the stakeholder says the change is "small"?
+### SME Probe
+How do you respond if a stakeholder labels a preference as a mandatory requirement?
 
 ---
 
-# 5. Stakeholder Disagrees With Your SME Recommendation
+## Q04 — Global Versus Local Requirements
 
-### Scenario Question
-You recommend using standard Employee Central functionality, but the stakeholder strongly disagrees. How would you handle it?
+### Interview Question
+Global HR wants one standard process, while a country team asks for a different EC process. How do you assess the exception?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** A local variation may be justified by policy, operations, or preference but its basis is unclear.
+- **Task:** Maintain global consistency where appropriate while meeting verified local requirements.
+- **Action:** I would document the common global requirement and local delta, seek evidence for mandatory constraints with qualified local owners, and classify the difference as data, process, security, reporting, or integration. I would compare supported options, assess maintainability and downstream impacts, and record the decision owner, exception rationale, tests, and review date.
+- **Result:** Any variation would be bounded, justified, and governed rather than becoming an undocumented fork.
 
-**Situation**  
-The stakeholder preferred a different solution from the one I recommended.
+### SAP SuccessFactors Employee Central Example
+Use representative global/local populations and verify exact tenant configuration before recommending a variation.
 
-**Task**  
-My responsibility was to explain the design rationale and ensure the decision was based on business and technical evidence.
-
-**Action**
-1. Listened carefully to the stakeholder's concerns.
-2. Reconfirmed the business outcome.
-3. Demonstrated the standard capability.
-4. Explained limitations honestly.
-5. Presented alternative options.
-6. Compared impact on usability, maintainability, integration, security, and future releases.
-7. Asked stakeholders to validate the priorities.
-8. Used a prototype or scenario-based demonstration where useful.
-9. Escalated only if a decision could not be reached at working level.
-10. Recorded the final decision and rationale.
-
-**Result**  
-The discussion remained professional and evidence-based, even when the preferred solution differed.
-
-### Follow-up Questions
-- How do you disagree without damaging the relationship?
-- What if the stakeholder is more senior?
-- When should an SME escalate?
+### SME Probe
+What would you do when the local team cannot evidence a claimed legal constraint?
 
 ---
 
-# 6. Global Template vs Local Business Need
+## Q05 — Requirements Change After Sign-Off
 
-### Scenario Question
-A global template team says a local HR process must follow the global design, while the local team says the template does not support its operational reality. What would you do?
+### Interview Question
+A business sponsor changes an acceptance criterion after the solution has been approved and built. How do you respond?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** A late requirement change affects delivered configuration, tests, timeline, and potentially connected systems.
+- **Task:** Incorporate the change through governance and protect delivery quality.
+- **Action:** I would document the new requirement and reason, assess scope/configuration/data/workflow/RBP/integration/testing impacts, estimate effort and risk with owners, and obtain the required decision. I would update the baseline, acceptance criteria, and traceability, then test both the change and regressions.
+- **Result:** The change would be controlled and visible rather than introduced informally into the build.
 
-**Situation**  
-Global standardization and local operational requirements were in conflict.
+### SAP SuccessFactors Employee Central Example
+Assess the effect of a changed transfer approval requirement on EC rules/workflow and downstream interfaces.
 
-**Task**  
-I needed to determine whether the local difference was justified and whether it could be accommodated without fragmenting the global model.
-
-**Action**
-1. Conducted structured requirement discovery with both teams.
-2. Identified the underlying business outcome.
-3. Categorized local requirements.
-4. Distinguished statutory obligations from local preferences.
-5. Assessed standard EC capabilities.
-6. Identified configuration options that preserve the global model.
-7. Evaluated the cost of local deviation.
-8. Presented options and trade-offs.
-9. Established governance for any approved exception.
-10. Documented the global/local design boundary.
-
-**Result**  
-The organization had a transparent mechanism for managing local variation without uncontrolled divergence.
-
-### Follow-up Questions
-- How would you prevent every country from requesting exceptions?
-- What belongs in the global template?
-- How would you govern approved deviations?
+### SME Probe
+How do you respond if the sponsor says the change is “just one small field” and should not require impact assessment?
 
 ---
 
-# 7. Technical Team and Business Team Disagree
+## Q06 — Unclear Decision Rights
 
-### Scenario Question
-The business says a requirement is straightforward, while the technical team says it has significant integration and security implications. How would you mediate?
+### Interview Question
+HR, HRIS, and Security each believe the other team should approve a sensitive access requirement. Delivery is blocked. How do you move forward?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Decision authority is not assigned, and teams cannot progress safely.
+- **Task:** Clarify accountability without making an unauthorized decision.
+- **Action:** I would identify the business outcome, policy owner, data owner, technical approver, security/risk authority, and impacted parties. I would propose a responsibility matrix and decision date, elevate unresolved accountability through governance, and document assumptions and the impact of delay. I would not approve access or accept residual risk outside my authority.
+- **Result:** The issue would have a named decision owner and a traceable path to resolution.
 
-**Situation**  
-The teams had different perceptions of the complexity of the requirement.
+### SAP SuccessFactors Employee Central Example
+Assign responsibilities for the access model, workflow policy, implementation, and security validation for the actual EC process.
 
-**Task**  
-I needed to create a shared understanding rather than allowing either team to dominate the discussion.
-
-**Action**
-1. Restated the requirement in business terms.
-2. Mapped the impacted EC objects and processes.
-3. Identified integration and security dependencies.
-4. Demonstrated where complexity originated.
-5. Distinguished essential requirements from optional behavior.
-6. Explored simpler alternatives.
-7. Quantified delivery and operational implications.
-8. Facilitated a decision based on agreed priorities.
-9. Updated the solution design.
-10. Communicated the decision to all stakeholders.
-
-**Result**  
-Both teams understood the actual impact and could make a transparent decision.
-
-### Follow-up Questions
-- What if technical constraints are unacceptable to the business?
-- How do you explain technical complexity to non-technical stakeholders?
-- How do you avoid overengineering?
+### SME Probe
+What should you do if the person with the most technical knowledge does not have the authority to accept the business risk?
 
 ---
 
-# 8. Executive Wants a Fast Go-Live
+## Q07 — Requirement Cannot Be Met Exactly
 
-### Scenario Question
-An executive stakeholder asks the team to accelerate go-live even though critical EC testing is incomplete. What would you do?
+### Interview Question
+The requested experience is not supported exactly by the current EC configuration or product scope. How do you handle the gap?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** The business expects behaviour that may not be available or suitable in the target environment.
+- **Task:** Establish the actual gap and propose viable alternatives.
+- **Action:** I would verify the requirement and supported product behaviour, identify which parts are essential, and test standard options. I would evaluate process changes, supported configuration, integration options, or a documented workaround as appropriate, comparing risk, maintenance and user impact. I would explain unsupported assumptions clearly and seek an authorized decision.
+- **Result:** The organization would choose among verified options rather than build to an unconfirmed promise.
 
-**Situation**  
-Business pressure required an accelerated go-live, but testing had unresolved risks.
+### SAP SuccessFactors Employee Central Example
+Validate the exact requirement in the target tenant and current product documentation before proposing implementation commitments.
 
-**Task**  
-I needed to provide a clear risk-based recommendation without unnecessarily blocking the business.
-
-**Action**
-1. Identified exactly which testing remained incomplete.
-2. Classified open defects by business impact.
-3. Distinguished critical controls from lower-risk issues.
-4. Assessed affected employee populations.
-5. Identified minimum evidence required for production readiness.
-6. Presented risk and mitigation options.
-7. Proposed a focused validation plan if appropriate.
-8. Defined explicit go/no-go criteria.
-9. Escalated unresolved acceptance decisions to the appropriate business owner.
-10. Documented the decision and residual risk.
-
-**Result**  
-The executive received a transparent view of readiness and risk rather than a simple technical yes/no response.
-
-### Follow-up Questions
-- What makes a defect go-live blocking?
-- Who owns business risk?
-- What evidence would you present to leadership?
+### SME Probe
+How do you prevent a workaround from being mistaken for a fully supported standard capability?
 
 ---
 
-# 9. Requirements Are Ambiguous
+## Q08 — Acceptance Criteria Are Subjective
 
-### Scenario Question
-A stakeholder says, "We need managers to have more flexibility in Employee Central." The requirement is too vague to configure. How would you proceed?
+### Interview Question
+A stakeholder says the solution is “not user-friendly” but cannot specify why. UAT sign-off is blocked. What do you do?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** Acceptance feedback is valid as a concern but too subjective to resolve consistently.
+- **Task:** Translate the feedback into observable usability or process criteria.
+- **Action:** I would observe representative users performing key tasks, identify points of confusion or rework, and ask what outcome they expected. I would convert findings into specific criteria such as steps, clarity, error recovery, time, or task completion, validate them with the stakeholder, and run a focused test with agreed evidence.
+- **Result:** The concern would become actionable and sign-off could be based on observable behaviour.
 
-**Situation**  
-The stakeholder communicated an outcome without defining the required system behavior.
+### SAP SuccessFactors Employee Central Example
+Observe a transfer/change task with representative users and document expected versus actual user actions and results.
 
-**Task**  
-I needed to convert the vague request into a precise, testable requirement.
-
-**Action**
-1. Asked what managers should be able to do.
-2. Identified affected employee populations.
-3. Clarified fields and transactions.
-4. Asked for examples of desired and undesired outcomes.
-5. Identified security implications.
-6. Clarified approval requirements.
-7. Identified workflow and business-rule implications.
-8. Converted the requirement into acceptance criteria.
-9. Validated the interpretation with the stakeholder.
-10. Only then moved to solution design.
-
-**Result**  
-The ambiguous request became a measurable requirement with clear acceptance criteria.
-
-### Follow-up Questions
-- What questions would you ask first?
-- How do you identify hidden requirements?
-- How do you prevent assumptions from entering configuration?
+### SME Probe
+How do you distinguish a genuine usability defect from resistance to a newly standardized process?
 
 ---
 
-# 10. SME Must Say No to a Requirement
+## Q09 — Requirement Conflicts with Data Governance
 
-### Scenario Question
-Describe how you would handle a requirement that creates unacceptable security, compliance, maintainability, or operational risk.
+### Interview Question
+A business user wants to store a new value in an existing field because it is convenient, but the field has a defined meaning and downstream use. How do you respond?
 
-### STAR Answer
+### STAR Model Answer
+- **Situation:** A short-term workaround would overload an existing data element and undermine its meaning.
+- **Task:** Preserve data semantics while meeting the real business need.
+- **Action:** I would clarify what information is actually required, identify the existing field definition and consumers, and explain the reporting/integration risk of repurposing it. I would assess supported data-model alternatives and maintenance implications, then agree a governed design with the data owner.
+- **Result:** The solution would retain a trustworthy data model and avoid hidden semantic conflicts.
 
-**Situation**  
-A requested design would have introduced significant risk into the EC solution.
+### SAP SuccessFactors Employee Central Example
+Trace the existing field's purpose through EC, reports, and integrations before recommending a new representation.
 
-**Task**  
-I needed to challenge the requirement professionally while still helping the stakeholder achieve the underlying business objective.
-
-**Action**
-1. Clarified the business outcome.
-2. Identified the specific risk.
-3. Explained the risk in business terms.
-4. Distinguished the requested solution from the underlying requirement.
-5. Proposed safer alternatives.
-6. Compared the alternatives objectively.
-7. Involved security, compliance, architecture, or governance stakeholders where appropriate.
-8. Documented the decision and risk acceptance where required.
-9. Obtained formal approval for the selected approach.
-10. Ensured the final design remained supportable.
-
-**Result**  
-The stakeholder received an alternative path to the business outcome without silently accepting unacceptable risk.
-
-### Follow-up Questions
-- How do you say no without appearing obstructive?
-- When should risk be formally accepted?
-- What if the business insists?
+### SME Probe
+What downstream defects can arise when one field contains values with two different meanings?
 
 ---
 
-# Rapid-Fire SME Probes
+## Q10 — Scope Creep During Delivery
 
-1. How do you handle conflicting requirements?
-2. How do you distinguish a requirement from a solution?
-3. How do you challenge a stakeholder professionally?
-4. When should an SME recommend standard functionality?
-5. When might local variation be justified?
-6. How do you identify hidden requirements?
-7. How do you manage late requirement changes?
-8. How do you communicate technical constraints?
-9. How do you handle executive pressure?
-10. Who owns business risk?
-11. Who makes the final design decision?
-12. How do you document architecture/design decisions?
-13. How do you manage scope creep?
-14. How do you convert ambiguous requirements into acceptance criteria?
-15. How can AI help analyze requirements without replacing stakeholder validation?
+### Interview Question
+During implementation, stakeholders repeatedly add new scenarios without changing timeline or resources. How do you manage scope?
 
----
+### STAR Model Answer
+- **Situation:** New asks accumulate and the team risks losing focus on the agreed outcome.
+- **Task:** Preserve delivery commitments while ensuring important requirements are evaluated fairly.
+- **Action:** I would log each request, distinguish defects from scope changes and enhancements, assess value/risk/dependencies/effort, and present options such as trade-off, phased release, or schedule/resource adjustment. I would get the authorized decision and update the backlog and acceptance baseline.
+- **Result:** Priorities and delivery consequences would remain visible, and the team would avoid ungoverned additions.
 
-# Master Stakeholder Conflict Framework
+### SAP SuccessFactors Employee Central Example
+Classify a new transfer variant as a defect, policy clarification, enhancement, or new scope using the approved requirement baseline.
 
-Use this sequence:
-
-**OUTCOME → FACTS → CONSTRAINTS → OPTIONS → TRADE-OFFS → DECISION → GOVERNANCE → COMMUNICATION**
-
-### 1. OUTCOME
-Ask:
-> "What business outcome are we trying to achieve?"
-
-Do not begin with configuration.
-
-### 2. FACTS
-Establish:
-- Current process
-- Current pain point
-- User population
-- Examples
-- Existing configuration
-- Data dependencies
-
-### 3. CONSTRAINTS
-Identify:
-- Statutory requirements
-- Policy
-- Security
-- Integration
-- Timeline
-- Budget
-- Platform capabilities
-- Supportability
-
-### 4. OPTIONS
-Usually compare:
-- Standard functionality
-- Configurable solution
-- Process change
-- Controlled extension/customization
-
-### 5. TRADE-OFFS
-Evaluate:
-- User experience
-- Maintainability
-- Integration
-- Security
-- Release impact
-- Data quality
-- Delivery effort
-- Operational support
-
-### 6. DECISION
-Make the decision criteria explicit.
-
-### 7. GOVERNANCE
-Define:
-- Owner
-- Approval
-- Change control
-- Risk acceptance
-- Documentation
-
-### 8. COMMUNICATION
-Ensure every affected team understands:
-- What was decided
-- Why
-- What changes
-- What remains out of scope
+### SME Probe
+How do you decide whether a newly discovered case is a defect or a legitimate new requirement?
 
 ---
 
-# Requirement Classification Framework
+## Q11 — Stakeholder Pushes for Production Shortcut
 
-| Requirement Type | SME Response |
+### Interview Question
+A senior leader asks for a quick configuration change in production to satisfy an urgent request, bypassing testing and change control. What is your response?
+
+### STAR Model Answer
+- **Situation:** Urgency creates pressure to bypass controls around a potentially impactful change.
+- **Task:** Protect production and the business while enabling an authorized urgent response.
+- **Action:** I would assess impact and urgency, identify a safe containment/workaround, explain risks and minimum necessary validation, and use the approved emergency change process if warranted. I would seek authorized approval, test the affected and adjacent paths, document the change, and validate outcomes after deployment.
+- **Result:** The business would have a governed response rather than an undocumented production modification.
+
+### SAP SuccessFactors Employee Central Example
+Use the actual release and emergency change process for the relevant EC configuration.
+
+### SME Probe
+What distinguishes an emergency change from an unauthorized change justified after the fact?
+
+---
+
+## Q12 — Evidence-Based Requirements Prioritization
+
+### Interview Question
+There are more EC requirements than the team can deliver in the current release. How do you prioritize?
+
+### STAR Model Answer
+- **Situation:** Multiple requirements compete for limited delivery capacity.
+- **Task:** Recommend an order that maximizes business value and controls material risk.
+- **Action:** I would assess business outcome, mandatory policy/compliance constraints, employee impact, operational risk, dependencies, effort, reversibility, and timing. I would distinguish release blockers from valuable enhancements, document assumptions and scoring rationale, and present options to the authorized decision owner.
+- **Result:** Priorities would be transparent and linked to business outcomes and risk.
+
+### SAP SuccessFactors Employee Central Example
+Prioritize requirements affecting data integrity, access controls, critical integrations, and user process based on evidenced business impact.
+
+### SME Probe
+How do you prevent the loudest stakeholder from dominating prioritization?
+
+---
+
+## Q13 — Business and Technical Teams Disagree on Root Cause
+
+### Interview Question
+HR says the EC solution is wrong, while the technical team says the requirement was misunderstood. How do you resolve the dispute?
+
+### STAR Model Answer
+- **Situation:** Competing explanations prevent the team from fixing the actual problem.
+- **Task:** Establish the agreed expected behaviour and identify the failed requirement/configuration boundary.
+- **Action:** I would retrieve the approved requirement and acceptance criteria, reproduce the scenario, compare expected and actual outputs, and inspect the design and test evidence. I would classify the finding as requirement ambiguity, design defect, implementation defect, data issue, or environment behaviour based on evidence. I would assign remediation and update documentation where the baseline itself was incomplete.
+- **Result:** The dispute would move from opinion to an evidence-backed decision and correction plan.
+
+### SAP SuccessFactors Employee Central Example
+Use the approved EC test case and configuration/design artifacts to trace the expected and actual transaction outcomes.
+
+### SME Probe
+What if the original requirement was ambiguous and both teams made reasonable but incompatible assumptions?
+
+---
+
+## Q14 — Stakeholder Rejects Risk Explanation
+
+### Interview Question
+You document an architectural risk, but leadership insists on proceeding and argues the risk is theoretical. How do you respond?
+
+### STAR Model Answer
+- **Situation:** Decision-makers discount a risk because impact or likelihood is not fully quantified.
+- **Task:** Clearly distinguish evidence, uncertainty, recommendation, and decision authority.
+- **Action:** I would explain the failure mode, assumptions, dependencies, evidence available, plausible business impact, and confidence level. I would identify what test or data could reduce uncertainty, propose mitigations and residual risk options, and record the accountable decision. I would not state an unproven root cause as fact or conceal a material risk.
+- **Result:** Leadership would make an informed decision with residual risk visible and owned.
+
+### SAP SuccessFactors Employee Central Example
+Present a risk record for the real EC dependency, including evidence, uncertainty, mitigation, and decision owner.
+
+### SME Probe
+How do you distinguish a recommendation based on incomplete evidence from a formal risk warning?
+
+---
+
+## Q15 — Global Template Versus User Experience
+
+### Interview Question
+A global HR template creates extra effort for a specific user population, but a local variation would add maintenance. How do you decide?
+
+### STAR Model Answer
+- **Situation:** Consistency and local usability are in tension.
+- **Task:** Evaluate whether the variation provides enough business value to justify its lifecycle cost.
+- **Action:** I would observe the affected workflow, quantify friction where possible, confirm mandatory policy needs, and compare template, training/process, configuration, and supported extension options. I would assess security, integration, supportability, and regression impacts, then record the decision and success measures.
+- **Result:** The choice would be evidence-based and reviewed after rollout rather than driven by a universal preference for either standardization or customization.
+
+### SAP SuccessFactors Employee Central Example
+Pilot the process with representative global/local users and validate supported configuration options in the tenant.
+
+### SME Probe
+What measures would show that the local variation justifies its additional complexity?
+
+---
+
+## Q16 — Requirements Traceability and Change Control
+
+### Interview Question
+A defect is found in UAT, but the team cannot identify which requirement or design decision the configuration was meant to satisfy. What do you do?
+
+### STAR Model Answer
+- **Situation:** Traceability gaps make it hard to assess intended behaviour and decide what to fix.
+- **Task:** Reconstruct the rationale and restore the chain from requirement through design, configuration, and tests.
+- **Action:** I would gather approved business process, tickets, decisions, configuration history, and test artifacts, and interview relevant owners. I would avoid inventing missing rationale, mark gaps explicitly, and obtain business confirmation of the intended behaviour. I would update traceability and change governance before implementing the correction.
+- **Result:** The team would have a clearer basis for the fix and a plan to prevent similar traceability gaps.
+
+### SAP SuccessFactors Employee Central Example
+Link the relevant EC requirement to rule/workflow/RBP/data design, configuration items, and UAT scenarios.
+
+### SME Probe
+What do you do if no accountable stakeholder can confirm the intended business behaviour?
+
+---
+
+## Q17 — Negotiate Acceptance and Residual Risk
+
+### Interview Question
+UAT reveals a low-frequency edge-case defect. The sponsor wants to accept it, but support believes the workaround is unclear. How do you facilitate the decision?
+
+### STAR Model Answer
+- **Situation:** A defect may be acceptable to business under certain conditions, but support and operational risks remain.
+- **Task:** Ensure acceptance is informed, authorized, and operationally manageable.
+- **Action:** I would define the affected population, frequency/evidence, business impact, workaround, detection, recoverability, and likely recurrence. I would seek input from business, support, security/integration owners as relevant, define acceptance/expiry criteria, and record the authorized risk decision. I would not treat a verbal acceptance as sufficient for a material production risk.
+- **Result:** The decision would have explicit ownership, mitigation, and a route to reassessment.
+
+### SAP SuccessFactors Employee Central Example
+Document a UAT defect with affected EC transaction, workaround steps, control implications, and operational owner.
+
+### SME Probe
+What makes a workaround unacceptable even when the business agrees to accept the defect?
+
+---
+
+## Q18 — Facilitate an Architecture Decision Workshop
+
+### Interview Question
+A complex EC design decision requires agreement across HR, integration, security, data, and operations. How do you run the workshop to reach a decision?
+
+### STAR Model Answer
+- **Situation:** Each discipline sees a different part of the problem and discussion risks becoming circular.
+- **Task:** Produce an actionable decision with recorded rationale and ownership.
+- **Action:** I would circulate the problem statement, requirements, options, decision criteria, known evidence, and open questions ahead of the session. I would confirm decision authority, hear constraints from each discipline, compare options and trade-offs, separate facts from assumptions, and close with decisions, owners, actions, and due dates. Unresolved items would be escalated rather than disguised as consensus.
+- **Result:** The group would have a traceable decision or a clear path to the missing evidence/authority.
+
+### SAP SuccessFactors Employee Central Example
+Use an option matrix covering data model, workflow, access, integration, testing, and support for the EC design at hand.
+
+### SME Probe
+How do you prevent a workshop from ending with agreement on discussion but no accountable decision?
+
+---
+
+## Q19 — Communicate Design Trade-Offs to Non-Technical Stakeholders
+
+### Interview Question
+A business leader cannot follow technical architecture details but must choose between two EC designs. How do you explain the decision?
+
+### STAR Model Answer
+- **Situation:** The decision is important, but the current explanation is too technical for the accountable business owner.
+- **Task:** Present choices in terms of business outcomes, risks, cost, and operational consequences.
+- **Action:** I would summarize the required outcome, show two or three viable options, and compare user impact, control, lifecycle cost, integration dependency, maintainability, and residual risk. I would use a simple process/model diagram and explain the assumptions and evidence required. I would ask the stakeholder to restate the trade-off before recording the decision.
+- **Result:** The decision-maker could make an informed choice without needing to understand every technical detail.
+
+### SAP SuccessFactors Employee Central Example
+Present standard configuration, process adjustment, and any justified supported extension in business language with explicit trade-offs.
+
+### SME Probe
+How do you explain a risk that cannot yet be assigned a reliable probability?
+
+---
+
+## Q20 — Defend a Difficult Requirement Decision
+
+### Interview Question
+You must defend a contested EC requirement/solution decision before a panel of business, technical, security, and operations stakeholders. What is your approach?
+
+### STAR Model Answer
+- **Situation:** The solution involves competing priorities and consequences across multiple disciplines.
+- **Task:** Show that the decision satisfies the requirement, considers viable alternatives, and leaves risks explicitly managed.
+- **Action:** I would present the validated problem statement, acceptance criteria, relevant EC capability/tenant constraints, options considered, decision criteria, impact assessment, security/integration/testing plan, and evidence. I would distinguish known facts from assumptions, identify rejected alternatives and why, and name the residual-risk owner and success metrics.
+- **Result:** The panel could assess the decision on evidence, business value, supportability, and accountable governance.
+
+### SAP SuccessFactors Employee Central Example
+Use an actual or controlled EC design case and trace the decision from requirement through data/workflow/RBP/integration and acceptance evidence.
+
+### SME Probe
+What missing evidence would make you recommend deferring the decision rather than forcing consensus?
+
+---
+
+# Rapid-Fire SME Probe Bank
+
+1. How do you convert a vague request to a testable requirement?
+2. How do you resolve mandatory-field conflicts?
+3. What evidence separates standard from custom fit?
+4. How do you govern local variation?
+5. How do you control late requirement changes?
+6. Who owns the final decision and risk?
+7. How do you verify a product capability claim?
+8. How do you define subjective acceptance?
+9. Why preserve data semantics?
+10. How do you control scope creep?
+11. How do you respond to a production shortcut request?
+12. How should competing requirements be prioritized?
+13. How do you resolve competing root-cause hypotheses?
+14. How do you communicate uncertain risk?
+15. When does an accepted defect still require mitigation?
+
+# STAR Answer Quality Rubric
+
+Score each dimension from 0 to 4 as a coaching aid, not a validated hiring assessment.
+
+| Dimension | Strong evidence |
 |---|---|
-| Statutory/legal | Validate and accommodate |
-| Mandatory company policy | Confirm policy owner and implement |
-| Business-critical | Assess solution options |
-| Operational preference | Challenge and simplify where appropriate |
-| User preference | Evaluate against business value |
-| Technical constraint | Explain impact and alternatives |
-| Security-sensitive | Involve security/governance |
-| Integration-dependent | Perform end-to-end impact analysis |
-| Future enhancement | Manage through roadmap/change process |
+| Situation | Defines the conflict, affected process, and business context. |
+| Task / ownership | Clarifies role, authority, and stakeholder responsibilities. |
+| Action / reasoning | Uses discovery, option analysis, evidence, and change governance. |
+| EC relevance | Connects the decision to relevant data, workflow, RBP, integration, and testing concerns. |
+| Result / evidence | Records a decision, acceptance criteria, or verification plan without fabricated metrics. |
+| SME insight | Explains trade-offs, risk, alternatives, and escalation. |
+| Integrity | Labels assumptions and does not claim authority or product behaviour without evidence. |
 
----
+# Common Stakeholder/Requirement Anti-Patterns
 
-# Standard vs Custom Decision Framework
-
-Before agreeing to customization, ask:
-
-1. Is the requirement genuinely mandatory?
-2. Can the business process be simplified?
-3. Does standard EC functionality already support the outcome?
-4. Can configuration solve it?
-5. Does an approved extension pattern exist?
-6. What integrations will be affected?
-7. What is the security impact?
-8. What is the release/upgrade impact?
-9. What is the support burden?
-10. Is the business willing to own the long-term consequence?
-
----
-
-# Stakeholder Communication Pattern
-
-A strong SME does not say:
-
-> "That cannot be done."
-
-Instead:
-
-> **"The business outcome is achievable, but the requested approach introduces X risk. I see three options. Option A stays closest to standard capability, Option B changes the process, and Option C introduces additional complexity. Here are the trade-offs. Based on the stated priorities, we can take the decision through the appropriate governance path."**
-
-This demonstrates advisory leadership rather than configuration-only thinking.
-
----
-
-# Conflict Resolution Matrix
-
-| Conflict | First Question | SME Focus |
-|---|---|---|
-| Global vs Local | Is the local variation mandatory? | Standardization |
-| HR vs Payroll | What controls are non-negotiable? | End-to-end process |
-| Business vs Technical | What causes the technical complexity? | Transparency |
-| Executive vs Delivery | What risk is being accepted? | Readiness |
-| User vs Security | What business outcome is required? | Controlled access |
-| Current vs Future | Is the requirement temporary or strategic? | Roadmap |
-| Standard vs Custom | Can the outcome be achieved without custom build? | Maintainability |
-
----
-
-# AI-Assisted Requirement Analysis
-
-AI can accelerate requirement work without becoming the decision-maker.
-
-### Useful Applications
-- Summarize stakeholder interviews.
-- Identify conflicting statements.
-- Extract functional requirements.
-- Detect ambiguous requirements.
-- Generate clarification questions.
-- Map requirements to EC capabilities.
-- Identify impacted objects and processes.
-- Generate acceptance criteria.
-- Suggest test scenarios.
-- Compare requirement versions.
-- Identify potential integration dependencies.
-- Draft decision logs.
-
-### Human Validation
-
-The SME must validate:
-- Business intent
-- Legal/statutory interpretation
-- Security implications
-- Data privacy
-- Solution feasibility
-- Stakeholder acceptance
-- Final design decision
-
-A strong interview statement:
-
-> **"I would use AI to accelerate requirement analysis and expose ambiguity or conflict, but the business owner and SME remain accountable for validating intent, feasibility, risk, and the final decision."**
-
----
-
-# Common Anti-Patterns
-
-Avoid:
-
-- Accepting the most senior stakeholder's request without analysis.
+- Jumping into configuration before clarifying the problem.
 - Treating stakeholder preference as a mandatory requirement.
-- Saying "standard functionality" without demonstrating why.
-- Saying "customization is impossible" without alternatives.
-- Allowing technical teams to make business decisions.
-- Allowing business teams to ignore security or integration constraints.
-- Escalating every disagreement immediately.
-- Hiding delivery risks to protect the timeline.
-- Allowing requirements to change without impact analysis.
-- Treating documentation as an administrative task.
-- Making configuration decisions before clarifying the business outcome.
+- Allowing scope changes without impact assessment.
+- Making a decision outside assigned authority.
+- Forcing agreement when key evidence is missing.
+- Claiming a product capability without verification.
+- Treating a risk warning as a proven root cause.
+- Recording acceptance without mitigation, owner, or exit criteria.
 
----
+# Master Framework — Conflict to Traceable Decision
 
-# Strong SME Answer Pattern
+**Clarify outcome → Establish facts and constraints → Identify decision owner → Generate viable options → Compare impacts and risks → Validate assumptions → Decide/govern → Update traceability → Test acceptance → Measure and revisit.**
 
-For any stakeholder conflict scenario:
+# Success Criteria
 
-1. **Listen and clarify.**
-2. **Identify the business outcome.**
-3. **Separate requirement from requested solution.**
-4. **Identify facts and constraints.**
-5. **Assess standard EC capability.**
-6. **Identify solution alternatives.**
-7. **Explain trade-offs.**
-8. **Facilitate the decision.**
-9. **Document governance and ownership.**
-10. **Communicate the decision and consequences.**
+The candidate can answer all 20 scenarios in STAR format, convert ambiguity into acceptance criteria, facilitate trade-off decisions, manage scope and residual risk, and communicate evidence accurately to both technical and non-technical stakeholders.
 
----
+## Source and Verification Guidance
 
-# Category Success Criteria
-
-The candidate is ready for this category when they can:
-
-- Resolve global versus local requirements.
-- Challenge custom requirements constructively.
-- Manage HR versus Payroll priorities.
-- Handle late requirement changes.
-- Communicate technical constraints to business stakeholders.
-- Handle executive pressure without hiding delivery risk.
-- Convert ambiguous requests into testable requirements.
-- Separate business requirements from proposed solutions.
-- Explain standard versus custom trade-offs.
-- Facilitate decisions without taking ownership away from the business.
-- Use evidence, prototypes, and impact analysis effectively.
-- Demonstrate trusted-advisor behavior.
-- Use AI to accelerate requirement analysis while retaining human accountability.
-
----
-
-## Interview Positioning
-
-For a Tech Delivery SME interview, frame stakeholder leadership as:
-
-**Business Outcome → Requirement Clarity → Constraints → Options → Trade-Offs → Decision → Governance → Delivery**
-
-The strongest answers demonstrate that the SME is not merely a configurator. The SME acts as a **trusted technology advisor who converts competing stakeholder expectations into clear, governed, and sustainable Employee Central solutions**.
+This is a coaching blueprint. Verify product-specific capabilities in the target EC tenant and current official SAP documentation. For security, country policy, and legal constraints, involve authorized specialists. Record assumptions, decision authority, and review status before using a recommendation in a live implementation.
