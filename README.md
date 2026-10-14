@@ -49,6 +49,12 @@ This repository is a living learning and experimentation ecosystem for architect
 
 > Learn -> Experiment -> Architect -> Build -> Share
 
+## Learning Sprints
+
+| Sprint | Level | Focus | Link |
+|---|---|---|---|
+| SAP SuccessFactors Employee Central Global Benefits — 20-Hour Implementation Sprint | Pre-Foundation to Foundation | 10 sessions, implementation exercises and rapid-fire reviews; Applied Application Architecture, IIL — Build, Energy sector | [Open sprint plan](learning/global-benefits/README.md) |
+
 ## SuccessLabs Academy
 
 **Mission:** Architecting Experiences for a Better World.
