@@ -1,6 +1,6 @@
 ---
 document_id: SL-GB-CSE-001
-version: 1.2.0
+version: 1.3.0
 authored: 2026-10-21
 status: ready-for-tenant-validation
 platform: SAP SuccessFactors Employee Central Global Benefits
@@ -627,6 +627,7 @@ Publication is a point-in-time transfer. **No unattended or bidirectional synchr
 
 | Version | Date | Change | Verification status |
 | --- | --- | --- | --- |
+| 1.3.0 | 21 October 2026 | Linked owner-supplied Gamma journal and added Gemini/ChatGPT/GitHub/Gamma skill workflow | Gamma contents unverified; integration remains manual |
 | 1.2.0 | 21 October 2026 | Added Gamma-ready SEG01–SEG21 full configuration sequence; clarified three-week calendar limit and separated marketing appendix | Source only; no Gamma deck or tenant execution created |
 | 1.1.0 | 21 October 2026 | Corrected cohort/Township/path mapping; Flight Mode!/Train Model; CALM implementation overlay; eight bootcamp flavors; dual-platform curriculum; 90-day engagement system | Source updated; platform setup and tenant execution not performed |
 | 1.0.0 | 21 October 2026 | Initial reusable 21-hour configuration playbook, expert route, 21 cards and acceptance pack | Sources reviewed; no SAP tenant execution performed |
@@ -738,7 +739,7 @@ Use the existing document as the common contract plus a **course/application ada
 course_adapter:
   course_id: SL_HR01_SFEC_GB_IMP_001
   source_document_id: SL-GB-CSE-001
-  source_version: 1.2.0
+  source_version: 1.3.0
   cohort: Architecture Cohort
   architecture_path: Application Architect
   process_architecture_home: Business Architect
@@ -1364,3 +1365,53 @@ Use a clean cyan/blue visual direction with large readable text. Each card conta
 The learner demonstrates the agreed configured benefits, employee enrollment/claims, event processing and financial-output boundary, with negative/boundary tests and an explainable defect/retest. CALM evidence identifies completed and blocked work. A presentation or saved configuration alone does not establish completion.
 
 Source for SEG01–SEG21: learner-supplied `Pasted text(2).txt`, configuration-activity list. The sequence organizes that supplied scope. Validate exact SAP fields, supported countries, workflows, jobs and UI against current target-release official guidance before tenant execution. SEG01–SEG21 are presentation/bootcamp segments. The existing C01–C21 cards and T01–T18 tests describe the narrower transport-allowance case and are not a complete test suite for all seven benefit categories.
+
+
+## 26. Configuration Journal and repeatable four-tool workflow
+
+**SAP SuccessFactors Employee Central Global Benefits Configuration Journal:** [Open in Gamma](https://gamma.app/docs/Configuration-Journal-wor7lx238ogjcm5).
+
+This is the journal URL supplied by the owner. Its content could not be retrieved during this update. The link is recorded as the presentation destination; it does not establish that Gamma matches the current GitHub version. Gamma transfer remains manual because no Gamma integration is configured.
+
+### Reusable skill
+
+Use **$prepare-implementation-journal** to create or update future implementation/configuration journals. Apply the same workflow to other modules while adapting their actual dependencies, official guide references and evidence requirements.
+
+| Stage | Tool | Work | Required handoff |
+| --- | --- | --- | --- |
+| 1 | Google Gemini | Start with the latest applicable official implementation guide. Extract activities, prerequisites, object/rule names, source sections, country/release constraints and validation tasks. | Guide title, official URL/version, target release, section/page references, extract and unresolved questions. |
+| 2 | ChatGPT | Read the extract and original source references, engineer the dependency-based sequence and validate assumptions. Update at most 21 segments with activities, expected outputs, tests and screenshot/evidence slots. | Reviewed journal Markdown, stable SEG IDs, source register and Gamma-ready card blocks. |
+| 3 | GitHub | Update this existing canonical Markdown and related screenshot assets. Preserve file identity, IDs and independent edits. Read back the published version. | Canonical file URL, source version and publication verification. |
+| 4 | Gamma AI | Manually copy/import the approved segment blocks into the existing Gamma journal and place real screenshots alongside their steps. | Presentation URL and the GitHub source version used. Verify the rendered content before calling the transfer complete. |
+
+Gemini extracts are derived working material. Official implementation guides remain the product authority. GitHub remains the educational source of truth. ChatGPT performs sequencing/review. Gamma presents the approved sequence. Keep Notion as the KM companion and reconcile its current content when updating it.
+
+### Standard segment evidence
+
+For SEG01–SEG21, include purpose, prerequisites, official guide/version/section, ordered configuration activities, verified objects/navigation, rules/date decisions, expected output, positive/negative/boundary validation, screenshot slots, record/log/test IDs, recovery and actual verification state.
+
+Store real sanitized screenshots in paths such as `images/SEG03/SEG03-01-permission-role.png` relative to this source. Add step, observation, release/test-tenant context and capture date. Embed actual files only; mark unavailable images as pending. Distinguish configuration screenshots from evidence that a transaction executed correctly.
+
+### Bootcamp contract for every journal
+
+- **Flight Mode! Fast Track:** 3 hours using expertise, prepared access and verified reusable configuration.
+- **Train Model Guided Track:** up to 21 learning hours across no more than three calendar weeks.
+- Preserve the same agreed scope, outcome and evidence rubric across both routes. Keep 21 segments at no more than 60 guided minutes each including verification/documentation/buffer.
+- Track relevant project/task/test/defect references in SAP Cloud ALM for the current implementation flavor. Execute actual configuration in SuccessFactors.
+- Keep the academy's 90-day marketing appendix outside the learner curriculum and Gamma journal.
+- Label unsupported scope, access blockers and production rollout separately. Do not claim tenant execution, screenshots, Gamma import or automatic synchronization without verified evidence.
+
+### Repeatable invocation
+
+“Use $prepare-implementation-journal for [application/module/release]. Read my Gemini extract and official guide references, update the existing GitHub journal in place, preserve SEG IDs, attach real screenshot evidence and prepare the manual Gamma handoff. Keep Flight Mode! at 3 hours and Train Model at up to 21 hours within three weeks, with the same outcome.”
+
+### Current handoff status
+
+| Item | Status |
+| --- | --- |
+| Gamma journal link | Owner-supplied link recorded |
+| Gamma content review | Unverified; retrieval did not expose content |
+| Automatic Gamma integration | Not configured |
+| Gemini extraction for a future journal | Supply guide/extract and source/version references at the next run |
+| Global Benefits segment outline | SEG01–SEG21 in section 25 |
+| Reusable skill | prepare-implementation-journal; save/installation status reported separately after verification |
