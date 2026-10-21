@@ -1,6 +1,6 @@
 ---
 document_id: SL-GB-CSE-001
-version: 1.1.0
+version: 1.2.0
 authored: 2026-10-21
 status: ready-for-tenant-validation
 platform: SAP SuccessFactors Employee Central Global Benefits
@@ -17,6 +17,8 @@ bootcamp_theme: Implementation
 orchestration_tool: SAP Cloud ALM
 fast_track_name: Flight Mode!
 guided_track_name: Train Model
+calendar_duration_max_weeks: 3
+configuration_segments_max: 21
 duration_minutes_max: 1260
 expert_route_minutes: 180
 canonical_repository: nbnayak88/successlabs-hr-autonomous-workforce
@@ -79,9 +81,9 @@ The Architecture Cohort, Township domain series, curriculum tier, lab theme, cou
 
 ## 4. Timebox and adaptive routes
 
-### Guided Track — Train Model: up to three days, seven hours per day
+### Guided Track — Train Model: up to 21 hours across three calendar weeks
 
-Each day has seven configuration cards × 45 minutes = 315 minutes. Add 30 minutes of shared review, 45 minutes of paired integration/retest, and 30 minutes of breaks = **420 minutes**. Three days = **1,260 minutes / 21 hours**, including breaks. Preparation checks are inside the timebox; access provisioning that cannot be completed there is a blocker, not hidden homework.
+The following three-day intensive option remains available within the three-week calendar limit. Each intensive day has seven configuration cards × 45 minutes = 315 minutes. Add 30 minutes of shared review, 45 minutes of paired integration/retest, and 30 minutes of breaks = **420 minutes**. Three days = **1,260 minutes / 21 hours**, including breaks. Preparation checks are inside the timebox; access provisioning that cannot be completed there is a blocker, not hidden homework.
 
 | Day | Cards | Shared review: 30 min | Integration/retest: 45 min | Breaks | Total |
 | --- | --- | --- | --- | --- | --- |
@@ -509,7 +511,7 @@ Copy this structure and replace the product-specific sequence; do not mechanical
 ```yaml
 bootcamp:
   id: SL_PRODUCT_CAPABILITY_001
-  version: 1.1.0
+  version: 1.2.0
   title: "A concrete implementation outcome"
   source_status: "draft / ready-for-tenant-validation / tenant-verified"
   product_release: "Record actual target version"
@@ -625,6 +627,7 @@ Publication is a point-in-time transfer. **No unattended or bidirectional synchr
 
 | Version | Date | Change | Verification status |
 | --- | --- | --- | --- |
+| 1.2.0 | 21 October 2026 | Added Gamma-ready SEG01–SEG21 full configuration sequence; clarified three-week calendar limit and separated marketing appendix | Source only; no Gamma deck or tenant execution created |
 | 1.1.0 | 21 October 2026 | Corrected cohort/Township/path mapping; Flight Mode!/Train Model; CALM implementation overlay; eight bootcamp flavors; dual-platform curriculum; 90-day engagement system | Source updated; platform setup and tenant execution not performed |
 | 1.0.0 | 21 October 2026 | Initial reusable 21-hour configuration playbook, expert route, 21 cards and acceptance pack | Sources reviewed; no SAP tenant execution performed |
 
@@ -632,7 +635,7 @@ Publication is a point-in-time transfer. **No unattended or bidirectional synchr
 
 ## 18. Bootcamp family: one learning system, multiple flavors
 
-**Every bootcamp runs from 3 hours (Fast Track — Flight Mode!) to a maximum of 21 hours (Guided Track — Train Model).** Each flavor defines one destination and one evidence rubric shared by both routes. A learner's pace never changes the promised result. Preserve the 21-hour ceiling including preparation, coaching, activities, assessment, documentation and breaks; the 90-day marketing programme below is academy work, not extra learner homework.
+**Every bootcamp runs from 3 hours (Fast Track — Flight Mode!) to a maximum of 21 learning hours spread across no more than three calendar weeks (Guided Track — Train Model).** Each flavor defines one destination and one evidence rubric shared by both routes. A learner's pace never changes the promised result. Preserve the 21-hour ceiling including preparation, coaching, activities, assessment, documentation and breaks; the 90-day marketing programme below is academy work, not extra learner homework.
 
 SAP Cloud ALM is abbreviated CALM in programme titles. Tool ownership below is the intended learning design, not a statement that integrations, licenses or connectors are already configured. SAP Cloud ALM supports implementation/project work and operations use cases; solution-specific coverage must be checked. SAP Signavio supports process work, and SAP LeanIX supports architecture work [T01–T04].
 
@@ -735,7 +738,7 @@ Use the existing document as the common contract plus a **course/application ada
 course_adapter:
   course_id: SL_HR01_SFEC_GB_IMP_001
   source_document_id: SL-GB-CSE-001
-  source_version: 1.1.0
+  source_version: 1.2.0
   cohort: Architecture Cohort
   architecture_path: Application Architect
   process_architecture_home: Business Architect
@@ -753,7 +756,7 @@ course_adapter:
   module: Global Benefits
   orchestration: SAP Cloud ALM
   route_fast: "3 hours — Flight Mode!"
-  route_guided: "Up to 21 hours — Train Model"
+  route_guided: "Up to 21 hours across three calendar weeks — Train Model"
   same_destination_rubric: true
   outcome_id: GB-OUT-001
   evidence_pack: "Cards C01–C21, mandatory T01–T18, conditional tests"
@@ -775,7 +778,9 @@ course_adapter:
 
 For a new module change: application/module and release, problem/policy, tenant/data requirements, tool adapter, object dependencies, scenarios, evidence rubric, source references and campaign topic kit. Retain: platform roles, Flight/Train labels, common outcome rule, 21-hour cap, module skeleton, evidence states, source governance and engagement cadence. Create courses progressively according to learner demand; a catalogue entry is not a live course or proof of delivery.
 
-## 22. Ninety-day social-media engagement system
+## 22. Academy marketing appendix: ninety-day social-media engagement system
+
+**This appendix is academy marketing, outside the bootcamp curriculum and learner schedule. Bootcamp engagement ends within three weeks.**
 
 **Planning window: 22 October 2026–19 January 2027, Asia/Kolkata; 90 calendar days.** This is a dated content/activity plan, not an automation, posting instruction or a claim of published posts. Each bootcamp flavor has its own 13-week topic kit below and shares the exact 90-day action calendar in section 23. Apply both to obtain a concrete theme-specific plan; no separate 90-day learner workload is created.
 
@@ -811,7 +816,7 @@ Use **Context, Content, Connection, Conversion, Contribution and Culture** as ed
 
 Record day/date, course/flavor ID, source card, content category, channel, hook, artifact, question/CTA, source version, actual URL, views, meaningful responses, saves, qualified interest, enrollment where applicable, activity completion, outcome evidence and learning for next week. Mark planned posts `Draft`; only a verified publication URL changes them to `Published`. Track conversion rates using observed denominators; set targets after a two-week baseline rather than inventing historical results.
 
-## 22A. Implementation Bootcamp — 13-week engagement kit
+## 22A. Implementation Bootcamp marketing campaign — 13-week topic bank
 
 **Audience:** application consultants who know topics but struggle with dependency order. **Promise:** one scoped configuration scenario with traceable evidence. **Tool pair:** SAP Cloud ALM + the chosen application; current module SF EC Global Benefits.
 
@@ -831,7 +836,7 @@ Record day/date, course/flavor ID, source card, content category, channel, hook,
 | 12 | A reusable portfolio beats a screenshot collection | Permissioned capstone walkthrough | Review one artifact against the rubric. |
 | 13 | Carry the method to the next module | Lessons, source changes and module adapter | Which module deserves the next implementation flavor? |
 
-## 22B. Operations Bootcamp — 13-week engagement kit
+## 22B. Operations Bootcamp marketing campaign — 13-week topic bank
 
 **Audience:** application support/operations professionals. **Promise:** a diagnosable issue, verified recovery and usable runbook. **Tool pair:** SAP Cloud ALM + the chosen application; monitoring availability is checked per supported solution.
 
@@ -851,7 +856,7 @@ Record day/date, course/flavor ID, source card, content category, channel, hook,
 | 12 | Demonstrate calm diagnosis under pressure | Permissioned incident simulation | Score the reasoning, not confidence alone. |
 | 13 | Improve the service, not just the dashboard | Retrospective and improvement backlog | What will you measure next? |
 
-## 22C. Process Bootcamp — 13-week engagement kit
+## 22C. Process Bootcamp marketing campaign — 13-week topic bank
 
 **Audience:** Business Architects, Process Architects, process owners and functional specialists. **Promise:** a validated as-is/to-be process with an explicit improvement hypothesis. **Tool pair:** SAP Signavio + SF/Ariba/selected application.
 
@@ -871,7 +876,7 @@ Record day/date, course/flavor ID, source card, content category, channel, hook,
 | 12 | Show a complete improvement story | As-is → evidence → to-be showcase | Is the claimed improvement supported? |
 | 13 | Keep the process alive after the workshop | Owner/measure/review cadence | Who will update the model next? |
 
-## 22D. Strategy & Architecture Bootcamp — 13-week engagement kit
+## 22D. Strategy & Architecture Bootcamp marketing campaign — 13-week topic bank
 
 **Audience:** architects and transformation leads. **Promise:** a defensible architecture decision and bounded transition roadmap. **Tool pair:** SAP LeanIX + the chosen application.
 
@@ -891,7 +896,7 @@ Record day/date, course/flavor ID, source card, content category, channel, hook,
 | 12 | Defend the decision to peers | Architecture review simulation | What challenge exposes a weak assumption? |
 | 13 | Turn architecture into an evolving conversation | Decision/change log and next review | What new evidence could change the roadmap? |
 
-## 22E. Certification Bootcamp — 13-week engagement kit
+## 22E. Certification Bootcamp marketing campaign — 13-week topic bank
 
 **Audience:** learners preparing for an explicitly named current certification. **Promise:** verified topic understanding and practice readiness, not a guaranteed exam pass. **Powered by:** Yoodli AI with official exam objectives/resources.
 
@@ -911,7 +916,7 @@ Record day/date, course/flavor ID, source card, content category, channel, hook,
 | 12 | Demonstrate readiness honestly | Timed explanation review | What remains unverified? |
 | 13 | Carry understanding into work | Application of one certified concept | How will you prove it in a real scenario? |
 
-## 22F. Interview Preparation Bootcamp — 13-week engagement kit
+## 22F. Interview Preparation Bootcamp marketing campaign — 13-week topic bank
 
 **Audience:** consultants preparing for a specific role and seniority. **Promise:** evidence-backed, concise answers with credible follow-up reasoning. **Powered by:** Yoodli AI + role/application case scenarios.
 
@@ -931,7 +936,7 @@ Record day/date, course/flavor ID, source card, content category, channel, hook,
 | 12 | Run a complete mock interview | Scored role-play portfolio | Which competency needs another attempt? |
 | 13 | Turn interview practice into capability | Learning gaps and next build | What artifact will prove the missing skill? |
 
-## 22G. Pre-Sales Bootcamp — 13-week engagement kit
+## 22G. Pre-Sales Bootcamp marketing campaign — 13-week topic bank
 
 **Audience:** solution consultants and architects supporting discovery and proposals. **Promise:** a credible discovery-to-value conversation and scoped demonstration. **Powered by:** Yoodli AI + the chosen application.
 
@@ -951,7 +956,7 @@ Record day/date, course/flavor ID, source card, content category, channel, hook,
 | 12 | Deliver a discovery-to-proposal simulation | Scored pitch and demonstration | Is the proposed next step useful? |
 | 13 | Learn from the conversation | Feedback and source improvement | Which assumption should the next discovery test? |
 
-## 22H. Project Management Bootcamp — 13-week engagement kit
+## 22H. Project Management Bootcamp marketing campaign — 13-week topic bank
 
 **Audience:** implementation leads and aspiring project managers. **Promise:** an executable bounded project plan and evidence-based status decision. **Tool pair:** SAP Cloud ALM + the chosen application project.
 
@@ -971,7 +976,7 @@ Record day/date, course/flavor ID, source card, content category, channel, hook,
 | 12 | Run a steering review simulation | CALM status + decision pack | Can you defend the readiness decision? |
 | 13 | Capture lessons as reusable changes | Retrospective and template update | Which lesson will change the next project? |
 
-## 23. Exact 90-day action calendar for every flavor
+## 23. Academy marketing appendix: exact 90-day action calendar
 
 **How to use:** select IMP/OPS/PRC/STR/CERT/INTP/PRE/PM; take that week's topic, artifact and question from section 22A–H; apply the exact dated action below. For example, IMP Day 1 publishes “Knowing screens does not reveal build order”; OPS Day 1 publishes “Operations begins with a service promise”; PRC Day 1 publishes “Begin with the outcome, not the diagram.” The artifact, demonstration and CTA on later days come from the same flavor/week row. This is a fully specified reusable campaign schedule rather than eight disconnected marketing outlines.
 
@@ -1118,3 +1123,244 @@ Additional sources reviewed for this update:
 | G03 | [Application Architecture Build journey](https://github.com/nbnayak88/architecture-center-atlas/blob/main/learning-journeys/01-energy/04-application-architecture/05-build-iil/README.md) | Verified JL-00065 and approved Pahacha paths. |
 
 Status after this source update: curriculum/engagement specifications documented; GitHub and existing Notion copy reconciled when writes are verified; TagMango/Zenler/Gamma/Kahoot/Canva course assets, actual SAP/Yoodli execution, social publishing and unattended synchronization remain unconfigured/unverified unless separately evidenced.
+
+
+## 25. Gamma AI presentation source: 21 implementation segments
+
+### Gamma authoring instructions
+
+Use the 21 segment blocks below as the slide/card source. Create **exactly 21 cards**, one per segment. Preserve segment numbers and sequence. The first card also carries the bootcamp title as a small heading. Do not add a separate cover or closing card. Keep the presentation focused on the supplied full Global Benefits configuration sequence. The earlier transport-allowance C01–C21 cards remain a detailed case-study reference, not the numbering of this broader sequence. Use **SEG01–SEG21** for these broader segments to avoid confusing them with C01–C21.
+
+Title: **SAP SuccessFactors Employee Central Global Benefits Implementation Bootcamp**. Subtitle: **Powered by SAP Cloud ALM and SAP SuccessFactors**. Context: Architecture Cohort, Application Architect path, Township HR01/AWF1. Process Architect remains under Business Architect.
+
+Use a clean cyan/blue visual direction with large readable text. Each card contains its segment title, the three configuration activities and a visible output checkpoint. Use a small consistent progress indicator. Suitable tenant screenshots can be inserted later with synthetic data. Never invent SAP screen captures, executed results or a live CALM project. Keep detailed field instructions in facilitator notes/source links rather than shrinking slide text. Present each listed output as the learner's target, not a completed implementation claim.
+
+### Duration and common destination
+
+- **Flight Mode! Fast Track:** 3 hours total, for experienced learners using a prepared sandbox and verified reusable configuration. Combine SEG01–07 in 45 minutes, SEG08–14 in 60 minutes and SEG15–21 in 75 minutes.
+- **Train Model Guided Track:** 21 segments of up to 60 minutes each, **21 learning hours maximum**, completed within **three calendar weeks maximum**. Week 1: SEG01–07. Week 2: SEG08–14. Week 3: SEG15–21. A three-day intensive option remains possible.
+- Each guided segment includes 5 minutes of recall/reference, 30 minutes of configuration, 10 minutes of validation, 5 minutes of CALM/evidence documentation and 10 minutes of break/buffer. Total: 60 minutes. Unused time can support a blocked segment while retaining the aggregate ceiling.
+- Both routes use the same agreed scope, destination and evidence rubric. Configure a bounded representative set in a prepared tenant. Confirm country-specific applicability. Record unsupported/out-of-scope items explicitly. Full production rollout and external access-provisioning lead time are separate project concerns.
+- In CALM, link each segment's relevant requirement/task, test execution, defect/retest and evidence. Perform actual configuration in the application. GitHub remains the educational source of truth and Notion the KM hub.
+- TagMango HUB hosts knowledge and live sessions. Zenler SCHOOL hosts recordings and all activities/submissions. Gamma supplies presentation content. Kahoot supports short retrieval/decision activities within the same timebox.
+- Learner engagement follows the actual bootcamp: prepare, participate/practise, demonstrate and celebrate, all within three weeks. Exclude the academy's 90-day marketing appendix from this presentation.
+
+### Gamma card blocks
+
+## SEG01 · Scope and implementation readiness
+
+**SAP SuccessFactors EC Global Benefits Implementation Bootcamp**
+
+- Confirm the benefit catalogue, countries and employee populations.
+- Agree policy, payroll boundary and target release.
+- Identify access, data and tool blockers.
+
+**Output checkpoint:** Approved scope and readiness checklist.
+
+---
+
+## SEG02 · Global Benefits enablement
+
+- Verify the required EC, MDF and Benefits capabilities.
+- Check Document Generation where the scope requires it.
+- Coordinate Provisioning changes with the authorized owner.
+
+**Output checkpoint:** Enablement evidence and available admin tools.
+
+---
+
+## SEG03 · Permissions and object security
+
+- Configure administrator, employee and approver roles.
+- Scope target populations and benefit-object permissions.
+- Verify job/ISC access and test an unauthorized employee.
+
+**Output checkpoint:** Permission matrix and positive/negative access results.
+
+---
+
+## SEG04 · Foundation data and picklists
+
+- Validate legal entities, locations, grades and currencies.
+- Inspect existing picklists before creating missing values.
+- Prepare synthetic employees and dependent data.
+
+**Output checkpoint:** Foundation-data and picklist register.
+
+---
+
+## SEG05 · Benefit schedules and periods
+
+- Define enrollment windows and coverage periods.
+- Create or reuse schedules for the scoped benefits.
+- Separate election, coverage, claim and payment dates.
+
+**Output checkpoint:** Schedule matrix with boundary examples.
+
+---
+
+## SEG06 · Payroll mappings and pay components
+
+- Confirm the supported payroll integration approach.
+- Prepare applicable earnings, deductions and contributions.
+- Validate component uniqueness, frequency and currency.
+
+**Output checkpoint:** Benefit-to-payroll mapping and expected outputs.
+
+---
+
+## SEG07 · Eligibility and entitlement rules
+
+- Translate policy into rule decision tables.
+- Configure eligibility, amounts and applicable contributions.
+- Test effective dates, missing data and ineligible employees.
+
+**Output checkpoint:** Tested rule catalogue with expected results.
+
+---
+
+## SEG08 · Approval workflows
+
+- Define enrollment, claim and event approval routing.
+- Create workflows and supported rule attachments.
+- Verify submission, approval, rejection and pending states.
+
+**Output checkpoint:** Approval matrix and transaction evidence.
+
+---
+
+## SEG09 · Allowance configuration
+
+- Link the allowance to its schedule and payroll mapping.
+- Attach eligibility and entitlement rules.
+- Verify enrollment and the expected compensation output.
+
+**Output checkpoint:** Working allowance with amount/date evidence.
+
+---
+
+## SEG10 · Reimbursement configuration
+
+- Maintain entitlement, claim limits and payment settings.
+- Attach the schedule and claim approval workflow.
+- Test valid, rejected and over-limit claims.
+
+**Output checkpoint:** Verified claim-to-approval/output trace.
+
+---
+
+## SEG11 · Pension and retirement configuration
+
+- Confirm country and plan applicability.
+- Configure applicable funds and contribution settings.
+- Attach schedules, rules and payroll mappings.
+
+**Output checkpoint:** Pension example with contribution checks.
+
+---
+
+## SEG12 · Savings-plan configuration
+
+- Confirm country and release support before building.
+- Configure applicable subtype, lookup, tiers and limits.
+- Test supported employee/employer contribution boundaries.
+
+**Output checkpoint:** Verified plan or an explicitly approved scope exclusion.
+
+---
+
+## SEG13 · Insurance configuration
+
+- Prepare providers and dependent/coverage prerequisites.
+- Configure the plan and applicable premium rate chart.
+- Assemble the benefit and test premiums and coverage.
+
+**Output checkpoint:** Insurance example with validated amounts and dependents.
+
+---
+
+## SEG14 · Deductible Allowance and Other benefits
+
+- Configure deductible allowance contributions and mapping.
+- Configure a scoped Other benefit and its eligibility.
+- Verify financial output or non-monetary access as appropriate.
+
+**Output checkpoint:** Working examples and clearly separated behavior.
+
+---
+
+## SEG15 · Benefit dependencies and resource links
+
+- Configure applicable relationships between existing benefits.
+- Maintain provider/help hyperlinks.
+- Test permitted and conflicting benefit combinations.
+
+**Output checkpoint:** Dependency matrix and verified employee links.
+
+---
+
+## SEG16 · People Profile and Benefits UI
+
+- Configure the supported Benefits Overview experience.
+- Maintain relevant profile blocks and section order.
+- Verify labels, field visibility and Configuration UI mappings.
+
+**Output checkpoint:** Usable employee-facing benefits experience.
+
+---
+
+## SEG17 · Enrollment experience
+
+- Synchronize dependents where required.
+- Configure enrollment template, process and benefit grouping.
+- Verify supported home-page cards, frequency and employee election.
+
+**Output checkpoint:** Completed representative enrollment journey.
+
+---
+
+## SEG18 · Work/life events and exceptions
+
+- Create event definitions, determination and action configuration.
+- Attach window/effective-date rules and relevant notices.
+- Prove the manual out-of-window enrollment/edit baseline.
+
+**Output checkpoint:** Correct employee action with verified exception dates.
+
+---
+
+## SEG19 · ISC and scheduled automation
+
+- Connect the supported event and Benefits subscriber.
+- Configure applicable master-data processing jobs.
+- Trace event results and inspect duplicate/overlapping processing.
+
+**Output checkpoint:** Event-to-benefit evidence and monitoring ownership.
+
+---
+
+## SEG20 · Reporting and integrated validation
+
+- Verify reporting access and applicable report content.
+- Run relevant configuration checks and integrated tests.
+- Reconcile outputs, repair defects and record retests.
+
+**Output checkpoint:** Reports, test evidence and resolved critical findings.
+
+---
+
+## SEG21 · Acceptance demonstration and handover
+
+- Demonstrate the agreed positive, negative and boundary cases.
+- Finalize guidance, configuration inventory and support ownership.
+- Review movement, rollback, risks and the readiness decision.
+
+**Output checkpoint:** Reviewed evidence pack and explicit acceptance decision.
+
+**Completion:** Same outcome and evidence standard in Flight Mode! and Train Model.
+
+### Acceptance and source mapping
+
+The learner demonstrates the agreed configured benefits, employee enrollment/claims, event processing and financial-output boundary, with negative/boundary tests and an explainable defect/retest. CALM evidence identifies completed and blocked work. A presentation or saved configuration alone does not establish completion.
+
+Source for SEG01–SEG21: learner-supplied `Pasted text(2).txt`, configuration-activity list. The sequence organizes that supplied scope. Validate exact SAP fields, supported countries, workflows, jobs and UI against current target-release official guidance before tenant execution. SEG01–SEG21 are presentation/bootcamp segments. The existing C01–C21 cards and T01–T18 tests describe the narrower transport-allowance case and are not a complete test suite for all seven benefit categories.
