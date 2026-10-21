@@ -359,3 +359,7 @@ Keep this sprint focused on application responsibilities and the configuration d
 - **Reporting and controls:** reconciliation, exception tracking, access validation and evidence for business sign-off.
 
 Validate the actual tenant, release, licensed functionality, country requirements and payroll landscape before applying any design to a live implementation.
+
+## Realize Configuration Sequence Bootcamp — 3 to 21 Hours
+
+Use the [Global Benefits Configuration Sequence Engine](configuration-sequence-engine/README.md) for a focused transport-allowance and work/life-event build. Includes 21 dependency-based configuration cards, a 3-hour expert route, a three-day guided route capped at 21 hours including breaks, acceptance tests, troubleshooting, evidence registers and a reusable bootcamp source template. This supplements the foundation sprint; SAP tenant execution remains unverified until learners run the documented tests.
