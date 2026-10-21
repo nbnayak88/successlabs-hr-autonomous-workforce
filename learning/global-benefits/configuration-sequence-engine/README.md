@@ -1,6 +1,6 @@
 ---
 document_id: SL-GB-CSE-001
-version: 1.0.0
+version: 1.1.0
 authored: 2026-10-21
 status: ready-for-tenant-validation
 platform: SAP SuccessFactors Employee Central Global Benefits
@@ -8,7 +8,15 @@ activate_phase: Realize
 learning_intent: Build
 primary_track: Implementation
 primary_lab: IIL / Build
-primary_journey_id: ENE-APP-IMP
+primary_journey_id: JL-00065
+legacy_workbook_journey_id: ENE-APP-IMP
+architecture_path: Application Architect
+process_architecture_home: Business Architect
+township_unit: HR01-ENE
+bootcamp_theme: Implementation
+orchestration_tool: SAP Cloud ALM
+fast_track_name: Flight Mode!
+guided_track_name: Train Model
 duration_minutes_max: 1260
 expert_route_minutes: 180
 canonical_repository: nbnayak88/successlabs-hr-autonomous-workforce
@@ -22,7 +30,7 @@ tenant_execution_status: not-executed
 
 **Configure, test and explain one end-to-end, event-driven transport allowance scenario in a prepared SAP SuccessFactors sandbox, producing evidence that another consultant can follow. Finish within 21 hours; experienced consultants may demonstrate the same scoped outcome in 3 hours.**
 
-This is a Realize-phase implementation bootcamp and a reusable source template. It turns topic-based SAP guidance into a dependency-based build sequence. It is a manual playbook and specification for a future sequence engine, not a deployed application or an automated tenant configurator.
+This is the **Implementation Bootcamp**, powered by **SAP Cloud ALM (CALM) + SAP SuccessFactors Employee Central Global Benefits**, in the Realize phase, and the reusable source for additional bootcamp flavors. It turns topic-based SAP guidance into a dependency-based build sequence. It is a manual playbook and specification for a future sequence engine, not a deployed application or an automated tenant configurator.
 
 The capstone covers one legal entity, one currency, one allowance, employee election outside open enrollment, and an employment-event path. It includes a manual exception baseline before automation, effective-date controls, employee permissions, operational evidence and a payroll handoff check. An optional personal-life-event contrast uses an existing insurance benefit; building an entire insurance product is outside scope.
 
@@ -44,32 +52,34 @@ The capstone covers one legal entity, one currency, one allowance, employee elec
 
 **Core mental model:** policy event → supported trigger → event determination → benefit event configuration → eligibility and date evaluation → enrollment action or exception → employee/approver action where required → compensation/payroll handoff → reconciliation.
 
-## 3. Learning-journey alignment
+## 3. Architecture Cohort → Township → HR alignment
 
-The attached `SuccessLabs_Academy_2640_Learning_Journeys.xlsx` contains 2,640 data rows with 2,640 unique LJ-IDs: **11 sectors × 12 streams × 20 tracks**. It is a catalogue, not a supplied configuration-manual template. Its columns are LJ-ID, Sector, Stream, Track, Sector Code, Stream Code, Track Code and Status. No workbook rows or statuses were changed.
+The **2,640 Learning Journeys belong to the Architecture Cohort**: 11 GICS sectors × 12 architecture streams × 20 Labs. This bootcamp follows the **Application Architect path**, then applies that thinking in the Township project → HR Academy → HR01/AWF1 Workforce Foundations → SAP SuccessFactors Employee Central → Global Benefits → Implementation Bootcamp.
 
-Use the workbook's codes as authoritative: this bootcamp's primary row is **ENE-APP-IMP**. Retain `APP` even when the learner-facing title is “Application & Process Architect”; retain `INF` when displaying “Cloud & Infrastructure Architect.” `IIL / Build` is a delivery-lab label, not a replacement for the workbook's `IMP` track code. Sector examples are illustrative and portable; they do not create new catalogue rows.
+**Process Architect belongs under Business Architect.** Application Architect owns application responsibilities, configuration dependencies, lifecycle behavior and application quality. Business Architect owns process architecture, value streams, capabilities and process improvement. Process inputs inform this implementation without renaming its architecture path.
 
-| Architecture lens | Existing Energy journey | Contribution within this bootcamp |
+### Verified GitHub anchors
+
+| Layer | Verified source | Interpretation |
 | --- | --- | --- |
-| Enterprise Architect | ENE-EA-IMP | Explain value, ownership and the Realize exit decision. |
-| Business Architect | ENE-BA-IMP | Translate transport policy into decisions and employee outcomes. |
-| Data Architect | ENE-DA-IMP | Trace legal entity, location, grade and effective dates. |
-| Application & Process Architect | ENE-APP-IMP | Own the configuration chain and dependency order. |
-| Technology Architect | ENE-TECH-IMP | Check release and supported execution mechanisms. |
-| AI Architect | ENE-AI-IMP | Use AI to challenge test coverage; verify suggestions in SAP. |
-| Security Architect | ENE-SEC-IMP | Prove employee/admin permissions and target populations. |
-| UI/UX Architect | ENE-UX-IMP | Test understandable dates, actions and employee messages. |
-| Cloud & Infrastructure Architect | ENE-INF-IMP | Check environment, access, outbound mail and monitoring dependencies. |
-| Integration Architect | ENE-INT-IMP | Trace allowance output and payroll reconciliation. |
-| Domain Architect | ENE-DOM-IMP | Separate eligibility, entitlement, election and payment. |
-| Industry Architect | ENE-INDU-IMP | Evaluate remote-site mobility and equitable access for energy workers. |
+| Architecture Cohort | [2,640 Architecture Learning Journeys](https://github.com/nbnayak88/architecture-center-atlas/tree/main/learning-journeys) | Vendor-neutral architecture foundation; not 2,640 SAP courses. |
+| Application Architect | [Energy → Application Architecture → Build/IIL](https://github.com/nbnayak88/architecture-center-atlas/blob/main/learning-journeys/01-energy/04-application-architecture/05-build-iil/README.md) | Verified journey **JL-00065**, currently a Planned scaffold. |
+| Business Architect | [Business Architect definition](https://github.com/nbnayak88/architecture-center-atlas/blob/main/architecture-streams/02-business.md) | Home of Process Architect specialization. |
+| Township project | [Learning Township](https://github.com/nbnayak88/architecture-center-atlas/tree/main/Learning%20Township) | Applied domain/project context. |
+| HR Academy | [HR Human Capital Capability Academy](https://github.com/nbnayak88/architecture-center-atlas/tree/main/Learning%20Township/01-HR-Human-Capital-Capability-Academy-Workforce-Monday) | HR domain within Township. |
+| HR01/AWF1 | [Autonomous Workforce Foundations](https://github.com/nbnayak88/architecture-center-atlas/tree/main/Learning%20Township/01-HR-Human-Capital-Capability-Academy-Workforce-Monday/HR01-AWF1-Architecting-Autonomous-Workforce-Foundations) | Parent series for EC/Global Benefits. |
+| Existing Township bootcamp | [HR01 Energy Foundation Bootcamp](https://github.com/nbnayak88/architecture-center-atlas/blob/main/Learning%20Township/01-HR-Human-Capital-Capability-Academy-Workforce-Monday/HR01-AWF1-Architecting-Autonomous-Workforce-Foundations/01-HR01-ENE-energy/02-Foundation/bootcamp/README.md) | Existing pathway **PATH-HR01-ENE-Foundation-Bootcamp**; supports the product-specific flavor below. |
+| Current application/flavor source | [This existing configuration sequence](https://github.com/nbnayak88/successlabs-hr-autonomous-workforce/blob/main/learning/global-benefits/configuration-sequence-engine/README.md) | SAP SuccessFactors EC Global Benefits Implementation Bootcamp, powered by SAP Cloud ALM. |
 
-Learners choose one primary lens and review other lenses through the same build. Do not multiply the workload into twelve implementations. The existing twenty catalogue tracks remain intact; this bootcamp primarily serves Implementation, with Quality Assurance, Integration and AMS evidence embedded. It is not twenty separate tracks squeezed into 21 hours. BAISI PAHACHA™ mapping can be added using its approved theme register; no replacement theme names are invented here.
+The repository physically keeps `learning-journeys/` and `Learning Township/` as separate directories. The arrows describe the learner's progression and cross-reference model, not a claim that folders are physically nested. Preserve both catalogues and their IDs. The Township foundation tier is a verified application anchor, not a claim that every bootcamp must be Foundation-level.
+
+The attached workbook has 2,640 unique IDs using older sector/stream/track codes. Keep **ENE-APP-IMP** only as the workbook cross-reference; do not substitute it for verified GitHub journey **JL-00065**. Workbook `Track=Implementation` maps to the relevant Build/IIL flavor. No workbook content/status is changed. All twelve architecture streams remain available across the cohort; this particular course has one primary path, Application Architect, with cross-disciplinary reviews where useful.
+
+The Architecture Cohort, Township domain series, curriculum tier, lab theme, course/module and delivery route are **separate dimensions**. They should not be conflated into another multiplication of required courses. The GitHub architecture README supplies the approved 22 Pahacha mastery paths; attach relevant path IDs to activities rather than inventing replacement themes.
 
 ## 4. Timebox and adaptive routes
 
-### Guided route: three days, seven hours per day
+### Guided Track — Train Model: up to three days, seven hours per day
 
 Each day has seven configuration cards × 45 minutes = 315 minutes. Add 30 minutes of shared review, 45 minutes of paired integration/retest, and 30 minutes of breaks = **420 minutes**. Three days = **1,260 minutes / 21 hours**, including breaks. Preparation checks are inside the timebox; access provisioning that cannot be completed there is a blocker, not hidden homework.
 
@@ -81,9 +91,9 @@ Each day has seven configuration cards × 45 minutes = 315 minutes. Add 30 minut
 
 Inside a 45-minute card: 5 minutes retrieve/predict, 5 inspect the relevant SAP reference, 20 configure, 10 test, 5 record evidence. A card can be verified early; use saved time for a failing scenario. At the cap, record incomplete work and the exact blocker. Do not silently extend the bootcamp.
 
-### Expert route: three hours total
+### Fast Track — Flight Mode!: three hours total
 
-This is a challenge route, not accelerated reading of every page. Reuse and verify existing objects; do not rebuild a functioning tenant merely to generate activity.
+**Same destination, same outcome, same evidence standard. Only the pace and coaching support differ.** Flight Mode! is the three-hour fast track; Train Model provides guided progress up to 21 hours. This is a challenge route, not accelerated reading of every page. Reuse and verify existing objects; do not rebuild a functioning tenant merely to generate activity.
 
 | Minutes | Task | Required proof |
 | --- | --- | --- |
@@ -499,7 +509,7 @@ Copy this structure and replace the product-specific sequence; do not mechanical
 ```yaml
 bootcamp:
   id: SL_PRODUCT_CAPABILITY_001
-  version: 1.0.0
+  version: 1.1.0
   title: "A concrete implementation outcome"
   source_status: "draft / ready-for-tenant-validation / tenant-verified"
   product_release: "Record actual target version"
@@ -509,6 +519,9 @@ bootcamp:
   track_code: IMP
   delivery_lab: "IIL / Build"
   activate_phase: Realize
+  fast_track: "Flight Mode!"
+  guided_track: "Train Model"
+  same_outcome_and_rubric: true
   minimum_expert_minutes: 180
   maximum_total_minutes: 1260
   guided_days: 3
@@ -612,4 +625,496 @@ Publication is a point-in-time transfer. **No unattended or bidirectional synchr
 
 | Version | Date | Change | Verification status |
 | --- | --- | --- | --- |
+| 1.1.0 | 21 October 2026 | Corrected cohort/Township/path mapping; Flight Mode!/Train Model; CALM implementation overlay; eight bootcamp flavors; dual-platform curriculum; 90-day engagement system | Source updated; platform setup and tenant execution not performed |
 | 1.0.0 | 21 October 2026 | Initial reusable 21-hour configuration playbook, expert route, 21 cards and acceptance pack | Sources reviewed; no SAP tenant execution performed |
+
+
+
+## 18. Bootcamp family: one learning system, multiple flavors
+
+**Every bootcamp runs from 3 hours (Fast Track — Flight Mode!) to a maximum of 21 hours (Guided Track — Train Model).** Each flavor defines one destination and one evidence rubric shared by both routes. A learner's pace never changes the promised result. Preserve the 21-hour ceiling including preparation, coaching, activities, assessment, documentation and breaks; the 90-day marketing programme below is academy work, not extra learner homework.
+
+SAP Cloud ALM is abbreviated CALM in programme titles. Tool ownership below is the intended learning design, not a statement that integrations, licenses or connectors are already configured. SAP Cloud ALM supports implementation/project work and operations use cases; solution-specific coverage must be checked. SAP Signavio supports process work, and SAP LeanIX supports architecture work [T01–T04].
+
+| Flavor ID | Bootcamp | Lab anchor / catalogue relationship | Powered by | Observable destination and assessment |
+| --- | --- | --- | --- | --- |
+| IMP | Implementation | Build / IIL | SAP Cloud ALM + specific application (current: SF EC Global Benefits) | Build and verify one scoped scenario; requirement → configuration → test → defect/retest → handover trace. |
+| OPS | Operations | Run / OOL | SAP Cloud ALM + specific application | Detect, triage and recover one scoped operational issue; validate restoration and produce a runbook. |
+| PRC | Process | Flow / PEL; Process Architect under Business Architect | SAP Signavio + specific application such as SF or Ariba | Model an as-is process, diagnose friction, design a to-be process and validate measurable acceptance criteria. |
+| STR | Strategy & Architecture | Design / SAL | SAP LeanIX + specific application such as SF or Ariba | Produce a bounded current/target architecture, options decision and transition roadmap tied to a capability outcome. |
+| CERT | Certification | Existing architecture catalogue 10-prove-ccl; legacy workbook Certification Tracker | Yoodli AI + current official exam scope/resources | Demonstrate syllabus-aligned explanation and practice readiness against a defined rubric; no exam-pass guarantee. |
+| INTP | Interview Preparation | Existing architecture catalogue 11-scale-scale; legacy workbook Interview Preparation | Yoodli AI + role/application scenarios | Deliver concise, defensible scenario responses with evidence, probing follow-ups and improved rubric scores. |
+| PRE | Pre-Sales | Existing architecture catalogue 12-influence-psl; legacy workbook Presales | Yoodli AI + specific application demo/business case | Conduct discovery, defend solution/value assumptions and respond to objections in a scored simulation. |
+| PM | Project Management | Existing architecture catalogue 13-lead-pml; legacy workbook Project Management | SAP Cloud ALM + specific application project | Establish a bounded project scope, work breakdown, risks, test/release gates and an explainable status decision. |
+
+**Lab-number reconciliation:** GitHub currently uses Prove/CCL, Scale, Influence/PSL and Lead/PML at 10–13, while the newer academy lab list uses Secure, Analyze, Govern and Adopt at those numbers. Do not silently overwrite either taxonomy or infer equivalence from the number. Use flavor IDs, explicit lab version and source URLs; preserve existing catalogue paths. Additional flavors across all twenty labs are planned as needed, not generated as invented live offerings.
+
+For Certification, Interview and Pre-Sales, Yoodli supplies role-play/practice feedback within its configured capabilities; mentors validate technical accuracy against approved sources. For all flavors, retain one application adapter and a theme-specific rubric. SAP-specific tools are selected for the corresponding SAP bootcamp; future non-SAP courses can select a relevant orchestration adapter without changing the common learning contract.
+
+### Current Global Benefits flavor: SAP Cloud ALM overlay
+
+The 21 configuration cards C01–C21 and tests T01–T18 remain the existing application build. CALM adds execution traceability inside the same timebox; it does not perform the SuccessFactors configuration automatically.
+
+| Existing cards | CALM learning action | Required evidence |
+| --- | --- | --- |
+| C01–C03 | Create/select a sandbox project and scope; record requirement GB-REQ-001 and acceptance criteria; assign owner and landscape context. | Actual project/requirement references or explicitly labelled design placeholders. |
+| C04–C08 | Represent dependency groups as tasks; link the canonical GitHub configuration/version and related requirement. | Task references and configuration evidence links. |
+| C09–C14 | Record manual and event-driven scenario tests in supported CALM test-management facilities; execute the SF actions in SF. | Test execution record + SF exception/enrollment/event-log references. |
+| C15–C18 | Record workflow, communications, negative cases and payroll-handoff results; keep observed integration boundary explicit. | Test results; blocked tests visibly blocked. |
+| C19 | Register the defect against the failed assertion; document repair and rerun. | Defect reference and passing retest. |
+| C20–C21 | Review scope completion, unresolved risks, handover and exit decision. | Traceable requirement → task → test → defect/retest → exit report. |
+
+Include tool orientation within the cards' five-minute reference/inspection periods and shared review time; use pre-provisioned project access for Flight Mode!. If CALM is unavailable, label its overlay **Designed—not executed** and distinguish that from SF execution. Do not award a fully tool-verified Implementation outcome until both the scoped application evidence and the CALM trace are verified. No automatic GitHub–CALM or Notion–CALM integration is claimed.
+
+## 19. Platform roles and common publishing contract
+
+| Platform | Academy responsibility | What appears in this bootcamp | Source/record authority |
+| --- | --- | --- | --- |
+| GitHub | Source of truth | Versioned curriculum, cards, rubrics, synthetic scenarios, tests and reusable templates | Canonical educational source; public files contain no private learner/customer data. |
+| Notion | Knowledge management | Explanations, facilitator notes, FAQs, decisions, source index and editorial review | KM companion linked to the GitHub version; conflicting edits require reconciliation. |
+| HUB — TagMango | Knowledge Engine and all live sessions | Outcome/promise, route selector, curated knowledge, live-session access, live briefings and session resource links | Live access/session hub. Recordings are published to SCHOOL. |
+| SCHOOL — Zenler | All-Activity Center and recording destination | Curriculum modules, recordings, tasks, submissions, practice, assessment, feedback, progress and portfolio completion | Learner activity/completion records, subject to platform capabilities and configured workflows. |
+| Gamma AI | Presentations | One outcome-led deck with card/test IDs and optional theme-specific stories | Derived from approved GitHub version; not a second curriculum authority. |
+| Kahoot | Quizzes, activities and gamification | Diagnostic polls, retrieval rounds, scenario decisions and team challenges | Activity results routed/recorded in Zenler; use supported embeds/links or manual evidence capture. |
+| Canva | Design enhancement | Thumbnails, diagrams, carousels, worksheets and presentation polish | Visuals retain correct labels and approved learning claims. |
+| ChatGPT / OpenAI | Primary AI partner | Explain concepts, challenge assumptions, draft scenarios and review evidence against sources | Human validates product claims; no invented tenant results. |
+| Claude / Anthropic | Alternative AI partner | Review long source packs, writing and reasoning tasks as appropriate | Same source and verification rules. Claude is not an OpenAI product. |
+| Gemini / Google | Alternative AI partner | Multimodal review, drafting and learning support as appropriate | Same source and verification rules. Gemini is not an OpenAI product. |
+| CALM / Signavio / LeanIX / Yoodli | Flavor-specific practice environment | Product-specific project/process/architecture/simulation work | Tool artifacts linked to Zenler activities and sanitized portfolio evidence. |
+
+The three primary AI families are **ChatGPT, Claude and Gemini**; default to ChatGPT unless the task benefits from another. No extra mandatory subscriptions are implied. Do not advertise an embed, SSO, automatic recording transfer or grade sync unless it has been configured and tested. Use the same learner email where feasible; provide separate HUB/SCHOOL signup instructions when required. Platform membership/recording entitlements follow the academy's actual offer, not assumptions in this template.
+
+## 20. Generic curriculum for TagMango and Zenler
+
+Publish the same outcome, module IDs and sequence on both platforms, using their different responsibilities. HUB is the knowledge/live entry point; SCHOOL owns the activity journey and recordings. A lesson link on HUB leads to the corresponding SCHOOL activity rather than duplicating submissions.
+
+| Module ID and common title | HUB / TagMango curriculum | SCHOOL / Zenler curriculum and activity | Current Global Benefits mapping |
+| --- | --- | --- | --- |
+| M00 — Your destination and route | Promise, final artifact preview, Flight Mode!/Train Model choice, live orientation access | Diagnostic, route selection, access readiness, learner baseline | Entry gate and route selection |
+| M01 — Understand the challenge | Case briefing, policy knowledge and live discovery segment | Policy decisions, scope and success criteria submission | C01–C03 |
+| M02 — Prepare your workspace | Source pack, tool map and live setup clinic | Access/data checklist and baseline artifact | C02–C04; avoid repeating already verified work |
+| M03 — Create the core solution | Knowledge cards and live guided build | Sequenced tasks, configuration/solution artifacts and reflection | C05–C08 |
+| M04 — Connect the complete flow | Dependency explanation and live scenario demonstration | End-to-end scenario execution and trace submission | C09–C14 |
+| M05 — Challenge and improve | Live troubleshooting/peer review and concise explanations | Kahoot activities, negative/boundary tests, defect and retest | C15–C19 |
+| M06 — Prove and showcase | Live demonstration forum and knowledge synthesis | Final portfolio, evidence review, rubric, feedback and completion state | C20–C21; all mandatory tests |
+| M07 — Reuse and contribute | Curated next experiment, community contribution invitation | Recordings indexed to modules, reusable portfolio, optional next step | No additional mandatory hours after the cap |
+
+### Lesson structure that both platforms can reproduce
+
+Every lesson has a stable ID, one learner block, expected outcome, entry conditions, concise explanation, source link/version, activity instructions, expected artifact, acceptance criteria, time allowance and help path. On TagMango publish the knowledge/live portion and SCHOOL link. On Zenler publish the recording, activity, submission and review. Use native features where available; a labelled external link plus an evidence upload is acceptable when an embed or native integration is unavailable.
+
+Recordings belong in Zenler, including replays of sessions accessed from HUB. Recordings are optional support/review material within the chosen route; learners need not watch every recording to pass. Do not count replay length as extra compulsory work beyond 21 hours. Planned curricula on these platforms are specifications in this source, not already-created platform courses.
+
+### Outcome equivalence and time allocation
+
+| Curriculum work | Flight Mode! minutes | Train Model maximum minutes | Evidence rule |
+| --- | --- | --- | --- |
+| M00–M02: readiness, challenge and baseline | 15 | 180 | Same input/policy/access checks; experienced learners reuse verified baseline. |
+| M03: core solution | 30 | 240 | Same core artifact and assertions. |
+| M04: end-to-end flow | 70 | 315 | Same supported execution trace. |
+| M05: challenge and improve | 40 | 255 | Same mandatory negative/boundary/defect evidence. |
+| M06–M07: demonstration, handover and contribution planning | 25 | 180 | Same assessed portfolio; optional future work ungraded. |
+| Breaks | Included in learner-managed 180-minute route | 90 | Route can switch; aggregate time never exceeds 1,260 minutes. |
+| Total | **180** | **1,260** | **One destination and one rubric.** |
+
+These module allocations regroup the existing card/day schedule; they are not additional hours. For the current case the detailed section 4 card schedule remains authoritative when a module crosses card boundaries. Mentor feedback and all mandatory activities fit inside the cap.
+
+### Common engagement mechanics inside the bootcamp
+
+- Open with a prediction, not a long lecture: choose what the system/process/person should do and explain why.
+- Use Kahoot for low-stakes retrieval and decision challenges, followed by a short explanation of the reasoning.
+- Award recognition for a tested assumption, useful question, repaired defect, clear explanation or helpful peer review. Scores support learning; technical completion still requires evidence.
+- Let learners compare two valid approaches using their chosen architecture lens; preserve the shared outcome.
+- Close with a demonstration and a reusable contribution to the cohort. Obtain permission before sharing learner work publicly.
+
+## 21. Scale this source across 1,000+ courses
+
+Use the existing document as the common contract plus a **course/application adapter**. Keep C01–C21 and T01–T18 intact for this Global Benefits flavor; future modules receive their own relevant cards/tests, not a blind find-and-replace of SAP object names. Twenty-one cards is the current design, not a compulsory card count for every theme.
+
+```yaml
+course_adapter:
+  course_id: SL_HR01_SFEC_GB_IMP_001
+  source_document_id: SL-GB-CSE-001
+  source_version: 1.1.0
+  cohort: Architecture Cohort
+  architecture_path: Application Architect
+  process_architecture_home: Business Architect
+  github_journey_id: JL-00065
+  legacy_workbook_id: ENE-APP-IMP
+  township_academy: HR
+  township_series: HR01-AWF1
+  township_unit_id: HR01-ENE
+  township_pathway_id: PATH-HR01-ENE-Foundation-Bootcamp
+  curriculum_tier: Foundation
+  sector: Energy
+  lab_reference_version: "Record source version; do not infer lab from number"
+  theme: IMP
+  application: SAP SuccessFactors Employee Central
+  module: Global Benefits
+  orchestration: SAP Cloud ALM
+  route_fast: "3 hours — Flight Mode!"
+  route_guided: "Up to 21 hours — Train Model"
+  same_destination_rubric: true
+  outcome_id: GB-OUT-001
+  evidence_pack: "Cards C01–C21, mandatory T01–T18, conditional tests"
+  source_github: "Existing canonical file URL"
+  km_notion: "Existing KM page URL"
+  hub_tagmango: "Set verified course/live URL when published"
+  school_zenler: "Set verified course/activity/recording URL when published"
+  gamma_deck: "Derived artifact URL and source version"
+  kahoot_activities: "IDs/URLs and rubric mapping"
+  canva_design: "Approved design URL/version"
+  primary_ai: ChatGPT
+  alternative_ai: [Claude, Gemini]
+  campaign_start: 2026-10-22
+  campaign_end: 2027-01-19
+  publication_status: source-updated-platforms-not-configured
+```
+
+**Scaling rule:** maintain stable IDs for course, theme, outcome, lesson, activity, test and content asset. A single source-version change triggers a bounded impact review of Notion, HUB, SCHOOL, Gamma, Kahoot and Canva outputs. Use an editorial release checklist and explicit status for each destination. Do not treat a derivative artifact as authority for changing the curriculum silently.
+
+For a new module change: application/module and release, problem/policy, tenant/data requirements, tool adapter, object dependencies, scenarios, evidence rubric, source references and campaign topic kit. Retain: platform roles, Flight/Train labels, common outcome rule, 21-hour cap, module skeleton, evidence states, source governance and engagement cadence. Create courses progressively according to learner demand; a catalogue entry is not a live course or proof of delivery.
+
+## 22. Ninety-day social-media engagement system
+
+**Planning window: 22 October 2026–19 January 2027, Asia/Kolkata; 90 calendar days.** This is a dated content/activity plan, not an automation, posting instruction or a claim of published posts. Each bootcamp flavor has its own 13-week topic kit below and shares the exact 90-day action calendar in section 23. Apply both to obtain a concrete theme-specific plan; no separate 90-day learner workload is created.
+
+Use one campaign record per `course_id + flavor_id + day`. Weekly kit supplies **problem, artifact and conversation focus**; the daily calendar supplies **format, channel, interaction and next action**. Week 13 uses only six days. This yields **90 planned activity slots per flavor × 8 flavors = 720 campaign records**, not a recommendation to publish eight competing posts daily on one account.
+
+### Publishing rhythm and practical workload
+
+Choose one active flagship bootcamp per audience/channel at a time. Start with IMP—SF EC Global Benefits. Keep other flavor plans ready; activate them when an actual course/date is confirmed, shifting Day 1 and recomputing dates. If running parallel flavors, use distinct audience series or alternate flagship weeks; never flood the same audience with all 720 slots.
+
+- LinkedIn: four anchor posts per week, assigned in the daily calendar; prioritize principle, story, useful decision and portfolio evidence.
+- Instagram/YouTube Shorts: repurpose the weekly demonstration into a short visual example; adapt it to the platform rather than copying a long caption.
+- Opt-in community: two weekly prompts/clinics, learner questions and showcase invitations; no unsolicited direct messages.
+- Daily activity means a meaningful contribution, response or review, not necessarily a new feed post. Use 15–20 minutes for response/insight capture on active days and batch the weekly source/deck/design work.
+- Every week collect one question, one misconception, one artifact insight and one improvement for the source backlog. Publish source revisions only after review.
+
+Content mix across each 90-day plan: **72 evergreen principles/strategies, 14 practical/how-to slots, 4 timely tool/release checks**. This approximates the 80/15/5 editorial principle; timely posts require a fresh official-source check when drafted. No tool announcement is invented to fill a slot.
+
+### Campaign progression and conversion without artificial urgency
+
+| Period | Audience shift | Offer/next action | Measures |
+| --- | --- | --- | --- |
+| Days 1–14 | Recognize the problem and who the bootcamp serves | Answer a diagnostic prompt; inspect a sample outcome | Relevant comments, saved posts, qualified diagnostic completions |
+| Days 15–28 | See how the method works | Explore sample source; choose Flight/Train readiness | Sample visits, route selection, permission-based interest |
+| Days 29–42 | Practise a small decision and experience feedback | Join a real scheduled HUB preview if available; otherwise request an interest notification | Preview participation, relevant questions, expressed intent |
+| Days 43–56 | Commit to an appropriate route | Enroll only when course URL/date/access are verified | Qualified enrollments, access readiness, first SCHOOL activity |
+| Days 57–70 | Build trust through observed learning evidence | Share an approved demo, peer explanation or common failure | Evidence submissions, activity completion, substantive feedback |
+| Days 71–84 | See transferable capability and community contribution | Join a showcase; contribute an improvement | Demonstrated outcomes, permissioned case studies, useful contributions |
+| Days 85–90 | Reflect and choose the next problem | Publish learning synthesis and next-flavor interest form | Outcome completion, repeat engagement, source improvements |
+
+Use **Context, Content, Connection, Conversion, Contribution and Culture** as editorial design labels for this campaign: establish purpose, teach, invite conversation, offer a useful next step, recognize contribution and reinforce Community/Curiosity/Courage. No guaranteed promotion, salary, certification result or implementation speed is claimed. No fake countdown or fabricated testimonial.
+
+### Common campaign measurement record
+
+Record day/date, course/flavor ID, source card, content category, channel, hook, artifact, question/CTA, source version, actual URL, views, meaningful responses, saves, qualified interest, enrollment where applicable, activity completion, outcome evidence and learning for next week. Mark planned posts `Draft`; only a verified publication URL changes them to `Published`. Track conversion rates using observed denominators; set targets after a two-week baseline rather than inventing historical results.
+
+## 22A. Implementation Bootcamp — 13-week engagement kit
+
+**Audience:** application consultants who know topics but struggle with dependency order. **Promise:** one scoped configuration scenario with traceable evidence. **Tool pair:** SAP Cloud ALM + the chosen application; current module SF EC Global Benefits.
+
+| Week | Core topic / hook | Artifact or demonstration | Question and useful CTA |
+| --- | --- | --- | --- |
+| 1 | Knowing screens does not reveal build order | Policy-to-outcome sketch | Which dependency causes your rework? Answer diagnostic. |
+| 2 | An exception is not eligibility | Transport decision table | Would this employee qualify? Predict the result. |
+| 3 | Build prerequisites before event wiring | C01–C07 dependency map | Find the missing predecessor; inspect sample source. |
+| 4 | One event, several different dates | Window/effective/payment date oracle | Which date owns payment? Choose route readiness. |
+| 5 | Prove the manual baseline before automation | Manual exception walkthrough | What evidence proves the window works? Join verified preview. |
+| 6 | A saved ISC flow is not a completed enrollment | Source event-to-log chain | Identify the first broken link. |
+| 7 | Make the CALM requirement testable | Requirement → task → test trace | Rewrite one vague acceptance criterion. |
+| 8 | A happy path hides entitlement errors | G4/wrong-entity negative test | Which test would stop unauthorized payment? |
+| 9 | Enrollment success is not payroll success | Compensation handoff reconciliation | Where is your verified boundary? |
+| 10 | Debug one variable at a time | C19 defect hypothesis and retest | Explain the evidence that changed your mind. |
+| 11 | The same outcome can take different routes | Flight/Train evidence comparison | Which support level fits your readiness? |
+| 12 | A reusable portfolio beats a screenshot collection | Permissioned capstone walkthrough | Review one artifact against the rubric. |
+| 13 | Carry the method to the next module | Lessons, source changes and module adapter | Which module deserves the next implementation flavor? |
+
+## 22B. Operations Bootcamp — 13-week engagement kit
+
+**Audience:** application support/operations professionals. **Promise:** a diagnosable issue, verified recovery and usable runbook. **Tool pair:** SAP Cloud ALM + the chosen application; monitoring availability is checked per supported solution.
+
+| Week | Core topic / hook | Artifact or demonstration | Question and useful CTA |
+| --- | --- | --- | --- |
+| 1 | Operations begins with a service promise | Service boundary and user impact | What failure hurts users most? |
+| 2 | An alert is a signal, not a diagnosis | Signal-to-impact map | Which alert deserves action? |
+| 3 | Agree ownership before the incident | RACI/escalation matrix | Who owns this handoff? |
+| 4 | Separate symptoms from causes | Incident timeline | What evidence is missing? |
+| 5 | Check what CALM can actually monitor | Official supported-solution check | Does your selected app support this use case? |
+| 6 | Triage needs hypotheses | Prioritized investigation checklist | What would you inspect first and why? |
+| 7 | Recovery needs a safe action | Bounded recovery exercise | What is the rollback trigger? |
+| 8 | A green dashboard may hide user failure | User/business validation | Who confirms restoration? |
+| 9 | Write a runbook a colleague can execute | Runbook draft and peer test | Which step assumes hidden knowledge? |
+| 10 | Repeated incidents reveal design debt | Problem/recurrence analysis | What permanent fix reduces repeat work? |
+| 11 | Build an operational evidence trail | Alert → incident → recovery trace | Which record proves recovery? |
+| 12 | Demonstrate calm diagnosis under pressure | Permissioned incident simulation | Score the reasoning, not confidence alone. |
+| 13 | Improve the service, not just the dashboard | Retrospective and improvement backlog | What will you measure next? |
+
+## 22C. Process Bootcamp — 13-week engagement kit
+
+**Audience:** Business Architects, Process Architects, process owners and functional specialists. **Promise:** a validated as-is/to-be process with an explicit improvement hypothesis. **Tool pair:** SAP Signavio + SF/Ariba/selected application.
+
+| Week | Core topic / hook | Artifact or demonstration | Question and useful CTA |
+| --- | --- | --- | --- |
+| 1 | Begin with the outcome, not the diagram | Process purpose and boundary | Where does value begin and end? |
+| 2 | Capability and process answer different questions | Capability-to-process map | Are you naming what or how? |
+| 3 | Map what people actually do | As-is with role handoffs | Which step differs from policy? |
+| 4 | Waiting time can dominate working time | Delay/friction hypothesis | Where would you collect evidence? |
+| 5 | Exceptions are part of the process | Variant and exception map | Which variation matters most? |
+| 6 | A model must communicate decisions | Signavio modelling critique | What ambiguity would cause rework? |
+| 7 | Design a to-be around a measurable shift | To-be and acceptance measures | What changes for the employee/supplier? |
+| 8 | Application behavior constrains the model | SF/Ariba fit-to-standard comparison | Which requirement needs a design decision? |
+| 9 | Test the process with stakeholders | Walkthrough/role-play | Where does the user get stuck? |
+| 10 | Improve controls without adding friction | Control-point review | Which control prevents a real failure? |
+| 11 | Evaluate alternatives, not just the favorite | Options decision table | What trade-off are you accepting? |
+| 12 | Show a complete improvement story | As-is → evidence → to-be showcase | Is the claimed improvement supported? |
+| 13 | Keep the process alive after the workshop | Owner/measure/review cadence | Who will update the model next? |
+
+## 22D. Strategy & Architecture Bootcamp — 13-week engagement kit
+
+**Audience:** architects and transformation leads. **Promise:** a defensible architecture decision and bounded transition roadmap. **Tool pair:** SAP LeanIX + the chosen application.
+
+| Week | Core topic / hook | Artifact or demonstration | Question and useful CTA |
+| --- | --- | --- | --- |
+| 1 | Architecture must serve a business decision | Capability problem statement | Which decision needs clarity? |
+| 2 | Inventory without relationships misleads | Application/capability relationship view | Which missing relation changes your judgement? |
+| 3 | Separate facts, assumptions and aspirations | Evidence-tagged current state | What do we actually know? |
+| 4 | Make application responsibilities explicit | Bounded current landscape | Where are responsibilities duplicated? |
+| 5 | Rationalization is a trade-off | Retain/change/retire options | What criterion would change the answer? |
+| 6 | Target architecture needs principles | Principle-to-target view | Which principle rules out an option? |
+| 7 | Model dependencies before dates | Transition dependency roadmap | What must happen first? |
+| 8 | Explore LeanIX with a clear question | Selected relationship/view walkthrough | What does the view help decide? |
+| 9 | SF/Ariba fit belongs in context | Application-fit decision record | Which capability gap remains? |
+| 10 | Risk must influence sequencing | Risk/mitigation overlay | What would you defer or accelerate? |
+| 11 | Value assumptions need owners | Benefits hypothesis and measure | Who will verify value after delivery? |
+| 12 | Defend the decision to peers | Architecture review simulation | What challenge exposes a weak assumption? |
+| 13 | Turn architecture into an evolving conversation | Decision/change log and next review | What new evidence could change the roadmap? |
+
+## 22E. Certification Bootcamp — 13-week engagement kit
+
+**Audience:** learners preparing for an explicitly named current certification. **Promise:** verified topic understanding and practice readiness, not a guaranteed exam pass. **Powered by:** Yoodli AI with official exam objectives/resources.
+
+| Week | Core topic / hook | Artifact or demonstration | Question and useful CTA |
+| --- | --- | --- | --- |
+| 1 | Readiness is more than completing videos | Exam-scope baseline | Which official objective is weakest? |
+| 2 | Explain the concept without the slide | 45-second concept explanation | Where does your reasoning become vague? |
+| 3 | Connect terms to a scenario | Objective-to-scenario map | When would this concept matter? |
+| 4 | Retrieve before rereading | Low-stakes recall sample | What can you explain unaided? |
+| 5 | Follow-ups expose shallow understanding | Yoodli probing role-play | Can you defend why, not just what? |
+| 6 | Correct one misconception at a time | Error/learning log | What evidence corrected your view? |
+| 7 | Distinguish similar concepts | Comparison response | What is the deciding difference? |
+| 8 | Practise reasoning, not exam dumps | Original scenario explanation | Which option fits the stated constraints? |
+| 9 | Make practice feedback actionable | Before/after rubric | Which single change improved clarity? |
+| 10 | Measure coverage against the official scope | Objective-evidence matrix | Which objective still lacks proof? |
+| 11 | Verify the current exam information | Fresh official certification check | Has scope or format changed? |
+| 12 | Demonstrate readiness honestly | Timed explanation review | What remains unverified? |
+| 13 | Carry understanding into work | Application of one certified concept | How will you prove it in a real scenario? |
+
+## 22F. Interview Preparation Bootcamp — 13-week engagement kit
+
+**Audience:** consultants preparing for a specific role and seniority. **Promise:** evidence-backed, concise answers with credible follow-up reasoning. **Powered by:** Yoodli AI + role/application case scenarios.
+
+| Week | Core topic / hook | Artifact or demonstration | Question and useful CTA |
+| --- | --- | --- | --- |
+| 1 | Start with the role, not a question dump | Role/competency baseline | What is the interviewer assessing? |
+| 2 | Tell the truth with useful detail | Experience-evidence inventory | Which result can you substantiate? |
+| 3 | Structure a scenario response | STAR/decision response outline | What decision did you personally own? |
+| 4 | A clear 45-second answer opens the conversation | Short technical response | What detail belongs in the follow-up? |
+| 5 | Trade-offs distinguish judgement | Standard/custom/workaround case | Why did you reject the alternatives? |
+| 6 | Practise a skeptical follow-up | Yoodli mock dialogue | What evidence supports your claim? |
+| 7 | Explain a failure and what changed | Defect/recovery narrative | What would you do differently? |
+| 8 | Draw the system boundary | Application/integration explanation | Which part was outside your responsibility? |
+| 9 | Use business language for technical work | Outcome-led answer | Why should a business stakeholder care? |
+| 10 | Improve one behavior per attempt | Before/after feedback | What changed in clarity or evidence? |
+| 11 | Respond without inventing experience | Honest unfamiliar-scenario response | How would you investigate the unknown? |
+| 12 | Run a complete mock interview | Scored role-play portfolio | Which competency needs another attempt? |
+| 13 | Turn interview practice into capability | Learning gaps and next build | What artifact will prove the missing skill? |
+
+## 22G. Pre-Sales Bootcamp — 13-week engagement kit
+
+**Audience:** solution consultants and architects supporting discovery and proposals. **Promise:** a credible discovery-to-value conversation and scoped demonstration. **Powered by:** Yoodli AI + the chosen application.
+
+| Week | Core topic / hook | Artifact or demonstration | Question and useful CTA |
+| --- | --- | --- | --- |
+| 1 | Discovery begins before the demo | Buyer problem and stakeholder map | Who experiences the problem? |
+| 2 | Ask questions that reveal consequences | Discovery question ladder | What happens if nothing changes? |
+| 3 | Separate need from requested feature | Need-to-capability map | Which outcome is behind the feature? |
+| 4 | A value claim is a hypothesis | Assumption-based value model | Which input needs customer validation? |
+| 5 | Demonstrate the buyer's scenario | SF/Ariba demo storyline | What should the buyer see first? |
+| 6 | Be precise about fit and gaps | Fit/gap and constraint table | What should you avoid promising? |
+| 7 | Practise objections with curiosity | Yoodli objection simulation | What concern is underneath the objection? |
+| 8 | Compare options on relevant criteria | Option/decision matrix | What matters most to this buyer? |
+| 9 | Scope protects trust | Assumptions/dependencies/exclusions | What would alter the proposal? |
+| 10 | Build a story from evidence | Short executive narrative | Does every claim have support? |
+| 11 | Handle a difficult stakeholder question | Follow-up simulation | When should you say you will verify? |
+| 12 | Deliver a discovery-to-proposal simulation | Scored pitch and demonstration | Is the proposed next step useful? |
+| 13 | Learn from the conversation | Feedback and source improvement | Which assumption should the next discovery test? |
+
+## 22H. Project Management Bootcamp — 13-week engagement kit
+
+**Audience:** implementation leads and aspiring project managers. **Promise:** an executable bounded project plan and evidence-based status decision. **Tool pair:** SAP Cloud ALM + the chosen application project.
+
+| Week | Core topic / hook | Artifact or demonstration | Question and useful CTA |
+| --- | --- | --- | --- |
+| 1 | A project begins with an outcome | Charter/scope baseline | What does done mean? |
+| 2 | Work breakdown should reveal deliverables | Deliverable/task structure | Which task produces no useful evidence? |
+| 3 | Dependencies matter more than arbitrary dates | Dependency map | What blocks the next step? |
+| 4 | Ownership must be visible | Team/RACI and decision rights | Who resolves this issue? |
+| 5 | Use CALM to represent the work | Project/scope/task walkthrough | Does status reflect observed work? |
+| 6 | Risk is a decision input | RAID register | What trigger activates the mitigation? |
+| 7 | Requirements need acceptance criteria | Requirement/test linkage | How will the team know it is met? |
+| 8 | A change needs impact analysis | Change request and options | What moves when scope changes? |
+| 9 | Test readiness is not optimism | Entry/exit gate | What evidence is missing? |
+| 10 | Report the problem early and clearly | Evidence-led status update | What decision do stakeholders need? |
+| 11 | Prepare the handover before the last day | Cutover/support checklist | Who owns the service after delivery? |
+| 12 | Run a steering review simulation | CALM status + decision pack | Can you defend the readiness decision? |
+| 13 | Capture lessons as reusable changes | Retrospective and template update | Which lesson will change the next project? |
+
+## 23. Exact 90-day action calendar for every flavor
+
+**How to use:** select IMP/OPS/PRC/STR/CERT/INTP/PRE/PM; take that week's topic, artifact and question from section 22A–H; apply the exact dated action below. For example, IMP Day 1 publishes “Knowing screens does not reveal build order”; OPS Day 1 publishes “Operations begins with a service promise”; PRC Day 1 publishes “Begin with the outcome, not the diagram.” The artifact, demonstration and CTA on later days come from the same flavor/week row. This is a fully specified reusable campaign schedule rather than eight disconnected marketing outlines.
+
+Use `P` for evergreen principle/strategy, `H` for practical how-to, `T` for timely tool/source verification. On H/T days retain the week's problem as context. On every action day, record audience questions and respond to relevant comments; on review days capture the learning for the source backlog. Offer confirmed live dates only; otherwise use an opt-in interest CTA.
+
+| Day | Date (IST) | Kit week | Mix | Channel/activity | Exact action |
+| --- | --- | --- | --- | --- | --- |
+| D01 | 2026-10-22 | W01 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D02 | 2026-10-23 | W01 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D03 | 2026-10-24 | W01 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D04 | 2026-10-25 | W01 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D05 | 2026-10-26 | W01 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D06 | 2026-10-27 | W01 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D07 | 2026-10-28 | W01 | P | LinkedIn reflection + review | Summarize one audience insight and one principle; invite the next question and review the campaign measures. |
+| D08 | 2026-10-29 | W02 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D09 | 2026-10-30 | W02 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D10 | 2026-10-31 | W02 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D11 | 2026-11-01 | W02 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D12 | 2026-11-02 | W02 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D13 | 2026-11-03 | W02 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D14 | 2026-11-04 | W02 | P | LinkedIn reflection + review | Summarize one audience insight and one principle; invite the next question and review the campaign measures. |
+| D15 | 2026-11-05 | W03 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D16 | 2026-11-06 | W03 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D17 | 2026-11-07 | W03 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D18 | 2026-11-08 | W03 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D19 | 2026-11-09 | W03 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D20 | 2026-11-10 | W03 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D21 | 2026-11-11 | W03 | T | LinkedIn reflection + review | Verify one relevant current official tool/release/exam-scope fact; publish the source, applicability and uncertainty. If nothing changed, explain what was checked; invent no news. |
+| D22 | 2026-11-12 | W04 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D23 | 2026-11-13 | W04 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D24 | 2026-11-14 | W04 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D25 | 2026-11-15 | W04 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D26 | 2026-11-16 | W04 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D27 | 2026-11-17 | W04 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D28 | 2026-11-18 | W04 | P | LinkedIn reflection + review | Summarize one audience insight and one principle; invite the next question and review the campaign measures. |
+| D29 | 2026-11-19 | W05 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D30 | 2026-11-20 | W05 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D31 | 2026-11-21 | W05 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D32 | 2026-11-22 | W05 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D33 | 2026-11-23 | W05 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D34 | 2026-11-24 | W05 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D35 | 2026-11-25 | W05 | P | LinkedIn reflection + review | Summarize one audience insight and one principle; invite the next question and review the campaign measures. |
+| D36 | 2026-11-26 | W06 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D37 | 2026-11-27 | W06 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D38 | 2026-11-28 | W06 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D39 | 2026-11-29 | W06 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D40 | 2026-11-30 | W06 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D41 | 2026-12-01 | W06 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D42 | 2026-12-02 | W06 | T | LinkedIn reflection + review | Verify one relevant current official tool/release/exam-scope fact; publish the source, applicability and uncertainty. If nothing changed, explain what was checked; invent no news. |
+| D43 | 2026-12-03 | W07 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D44 | 2026-12-04 | W07 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D45 | 2026-12-05 | W07 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D46 | 2026-12-06 | W07 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D47 | 2026-12-07 | W07 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D48 | 2026-12-08 | W07 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D49 | 2026-12-09 | W07 | P | LinkedIn reflection + review | Summarize one audience insight and one principle; invite the next question and review the campaign measures. |
+| D50 | 2026-12-10 | W08 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D51 | 2026-12-11 | W08 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D52 | 2026-12-12 | W08 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D53 | 2026-12-13 | W08 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D54 | 2026-12-14 | W08 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D55 | 2026-12-15 | W08 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D56 | 2026-12-16 | W08 | P | LinkedIn reflection + review | Summarize one audience insight and one principle; invite the next question and review the campaign measures. |
+| D57 | 2026-12-17 | W09 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D58 | 2026-12-18 | W09 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D59 | 2026-12-19 | W09 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D60 | 2026-12-20 | W09 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D61 | 2026-12-21 | W09 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D62 | 2026-12-22 | W09 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D63 | 2026-12-23 | W09 | T | LinkedIn reflection + review | Verify one relevant current official tool/release/exam-scope fact; publish the source, applicability and uncertainty. If nothing changed, explain what was checked; invent no news. |
+| D64 | 2026-12-24 | W10 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D65 | 2026-12-25 | W10 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D66 | 2026-12-26 | W10 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D67 | 2026-12-27 | W10 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D68 | 2026-12-28 | W10 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D69 | 2026-12-29 | W10 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D70 | 2026-12-30 | W10 | P | LinkedIn reflection + review | Summarize one audience insight and one principle; invite the next question and review the campaign measures. |
+| D71 | 2026-12-31 | W11 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D72 | 2027-01-01 | W11 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D73 | 2027-01-02 | W11 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D74 | 2027-01-03 | W11 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D75 | 2027-01-04 | W11 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D76 | 2027-01-05 | W11 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D77 | 2027-01-06 | W11 | P | LinkedIn reflection + review | Summarize one audience insight and one principle; invite the next question and review the campaign measures. |
+| D78 | 2027-01-07 | W12 | P | LinkedIn text + question | Publish the weekly hook with one concrete problem and a prediction question; invite an experience-based reply. |
+| D79 | 2027-01-08 | W12 | P | Community conversation | Post the weekly question in the opt-in group; respond to each substantive answer and collect misconceptions. |
+| D80 | 2027-01-09 | W12 | P | LinkedIn carousel | Show the weekly artifact as a 5-panel Gamma/Canva explanation: problem, decision, example, evidence, question. |
+| D81 | 2027-01-10 | W12 | P | Instagram Reel / YouTube Short | Repurpose one weekly example into a 45–60 second explanation; ask viewers to predict the result. |
+| D82 | 2027-01-11 | W12 | P | LinkedIn evidence post | Share a synthetic or permissioned example of the weekly artifact; distinguish observed results from assumptions. |
+| D83 | 2027-01-12 | W12 | H | HUB live preview / clinic | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D84 | 2027-01-13 | W12 | T | LinkedIn reflection + review | Verify one relevant current official tool/release/exam-scope fact; publish the source, applicability and uncertainty. If nothing changed, explain what was checked; invent no news. |
+| D85 | 2027-01-14 | W13 | P | LinkedIn text + question | Publish the final-week synthesis using the flavor’s Week 13 topic; ask which principle learners can transfer to a new problem. |
+| D86 | 2027-01-15 | W13 | P | Community conversation | Collect opt-in learner/peer reflections and unresolved questions; obtain approval before quoting anyone. |
+| D87 | 2027-01-16 | W13 | H | LinkedIn carousel | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D88 | 2027-01-17 | W13 | P | Instagram Reel / YouTube Short | Share a final short explanation of the Week 13 artifact and one transferable decision principle; invite a specific next-problem suggestion. |
+| D89 | 2027-01-18 | W13 | H | LinkedIn evidence post | Demonstrate one practical step in the weekly artifact; give a tiny optional exercise, reveal the reasoning and link the relevant source/activity. |
+| D90 | 2027-01-19 | W13 | P | Campaign review + LinkedIn summary | Report observed engagement and learning outcomes, publish the source-improvement summary and invite interest in the next confirmed flavor; do not invent results. |
+
+### Current IMP campaign: first-week ready-to-produce briefs
+
+| Slot | Global Benefits-specific production brief | Evidence/CTA |
+| --- | --- | --- |
+| D01 | LinkedIn: “Why knowing every Benefits screen still leaves you unsure what to configure first.” Explain dependencies before navigation. | Ask which dependency has caused rework; no private tenant screenshots. |
+| D02 | Community prompt: “A transfer makes an employee eligible. Do you open an exception, auto-enroll, update or end enrollment?” | Collect rationale; explain policy choice and supported mechanism. |
+| D03 | Carousel: Architecture Cohort → Application Architect → Township HR01 → SF EC Global Benefits → Build/IIL. | Link the verified GitHub anchors and the current source. |
+| D04 | Short video: contrast election window, enrollment effective date and payment-effective date. | Use the illustrative date oracle; ask viewers which date governs each outcome. |
+| D05 | Evidence post: show a synthetic requirement → configuration card → test trace and the intended CALM overlay. | Label design-only tool records honestly; inspect source. |
+| D06 | Preview/clinic: demonstrate manual out-of-window election and one negative eligibility case in an available sandbox. | If no tenant/date is available, run a labelled decision exercise; share SCHOOL activity/replay link only when published. |
+| D07 | Reflection: “An exception creates an opportunity; it does not automatically establish entitlement.” | Capture one misconception and one improvement for the source. |
+
+### Per-flavor channel/CTA adaptations
+
+| Flavor | Strong social proof | Diagnostic invitation | Completion-story invitation |
+| --- | --- | --- | --- |
+| IMP | Requirement, tested configuration and defect repair | Predict this configuration outcome | Walk through your tested scenario. |
+| OPS | Recovery evidence and runbook | Choose the next triage action | Explain how you proved restoration. |
+| PRC | As-is/to-be comparison with validated measures | Find the friction or missing handoff | Show why the process should improve. |
+| STR | Options decision and transition dependencies | Challenge an architecture assumption | Defend the chosen roadmap. |
+| CERT | Objective-aligned explanation with reviewed feedback | Explain one current official objective | Demonstrate understanding; claim no exam result without proof. |
+| INTP | Honest scenario response and improved follow-up | Answer a role-specific question | Show the reasoning behind your response. |
+| PRE | Discovery quality and defensible value assumptions | Ask the next useful discovery question | Present a scoped, credible solution conversation. |
+| PM | Requirement-to-deliverable/test trace and status decision | Identify the dependency or risk | Explain the evidence behind readiness. |
+
+## 24. Editorial release and source governance
+
+1. Update this existing GitHub source/version and preserve its document ID, file path, cards and tests. No parallel replacement source is created.
+2. Reconcile the existing Notion KM page; preserve unrelated edits and list conflicts rather than overwrite them silently.
+3. Map the same M00–M07 IDs into the planned HUB and SCHOOL curricula. TagMango hosts knowledge/live access; Zenler hosts all activities and recordings.
+4. Derive Gamma presentations, Kahoot activities and Canva designs from the approved version; review accuracy before publication.
+5. Choose the relevant AI assistant, verify technical claims against official sources and mark any simulated results.
+6. Activate only a course's confirmed campaign and dates. The 90-day calendar is a plan; publishing, reminders and recurring automation are not configured by this update.
+7. Check the same destination/rubric across Flight Mode! and Train Model and the aggregate 21-hour ceiling before release.
+
+Additional sources reviewed for this update:
+
+| ID | Source | Used for |
+| --- | --- | --- |
+| T01 | [SAP Cloud ALM Implementation feature scope](https://help.sap.com/docs/cloud-alm/feature-scope-description/implementation) | Project/scope/task and implementation orchestration roles; confirm actual tool availability. |
+| T02 | [SAP Cloud ALM for Operations](https://support.sap.com/en/alm/sap-cloud-alm/operations.html) | Operations use cases; support varies by solution and setup. |
+| T03 | [SAP integrated toolchain: target architecture, processes and requirements](https://help.sap.com/docs/erp-transformation-with-itc/buildable-map/explore-define-target-architecture-processes-and-requirements) | LeanIX architecture, Signavio process and CALM implementation responsibilities. |
+| T04 | [SAP process design to solution implementation](https://help.sap.com/docs/erp-transformation-with-itc/btm/process-design-to-solution-implementation) | Roles across Signavio, LeanIX and CALM; not evidence that this academy's integrations are configured. |
+| G01 | [Architecture journeys](https://github.com/nbnayak88/architecture-center-atlas/blob/main/learning-journeys/README.md) | Verified cohort catalogue structure and Planned status. |
+| G02 | [Township source](https://github.com/nbnayak88/architecture-center-atlas/blob/main/Learning%20Township/README.md) | Separate physical catalogue, academy/series/sector/tier/format structure. |
+| G03 | [Application Architecture Build journey](https://github.com/nbnayak88/architecture-center-atlas/blob/main/learning-journeys/01-energy/04-application-architecture/05-build-iil/README.md) | Verified JL-00065 and approved Pahacha paths. |
+
+Status after this source update: curriculum/engagement specifications documented; GitHub and existing Notion copy reconciled when writes are verified; TagMango/Zenler/Gamma/Kahoot/Canva course assets, actual SAP/Yoodli execution, social publishing and unattended synchronization remain unconfigured/unverified unless separately evidenced.
